@@ -91,6 +91,68 @@
 
         <!-- Search Results -->
         <div class="col-md-9">
+
+            <!-- Selected Filters -->
+            <div class="mb-3">
+                <h6>Geselecteerde Filters:</h6>
+                <div>
+                    <!-- Continent Badges -->
+                    @if(request()->has('continent'))
+                        @foreach(request('continent') as $continent)
+                            <span class="badge bg-primary me-2">
+                                {{ $continent }}
+                                <a href="{{ route('search', array_merge(request()->except('continent', 'page'), ['continent' => array_diff(request('continent'), [$continent])])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+                        
+                    <!-- Country Badges -->
+                    @if(request()->has('country'))
+                        @foreach(request('country') as $country)
+                            <span class="badge bg-secondary me-2">
+                                {{ $country }}
+                                <a href="{{ route('search', array_merge(request()->except('country', 'page'), ['country' => array_diff(request('country'), [$country])])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+                        
+                    <!-- Cruiseline Badges -->
+                    @if(request()->has('cruiseline'))
+                        @foreach(request('cruiseline') as $cruiseline)
+                            <span class="badge bg-success me-2">
+                                {{ $cruiseline }}
+                                <a href="{{ route('search', array_merge(request()->except('cruiseline', 'page'), ['cruiseline' => array_diff(request('cruiseline'), [$cruiseline])])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+                        
+                    <!-- Cruiseship Badges -->
+                    @if(request()->has('cruiseship'))
+                        @foreach(request('cruiseship') as $cruiseship)
+                            <span class="badge bg-info me-2">
+                                {{ $cruiseship }}
+                                <a href="{{ route('search', array_merge(request()->except('cruiseship', 'page'), ['cruiseship' => array_diff(request('cruiseship'), [$cruiseship])])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+                        
+                    <!-- Clear All Filters -->
+                    @if(request()->hasAny(['continent', 'country', 'cruiseline', 'cruiseship']))
+                        <a href="{{ route('search', request()->except(['continent', 'country', 'cruiseline', 'cruiseship', 'page'])) }}" class="btn btn-link text-danger">
+                            Verwijder alle filters
+                        </a>
+                    @endif
+                </div>
+            </div>
+
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <p class="mb-0">{{ $totalResults }} cruises gevonden</p>
                 <form method="GET" action="{{ route('search') }}">
