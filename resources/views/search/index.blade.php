@@ -243,7 +243,7 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <p class="mb-0">{{ $totalResults }} cruises gevonden</p>
+                <p class="mb-0">{{ $totalResults }} cruise aanbiedingen gevonden</p>
                 <form method="GET" action="{{ route('search') }}">
                     @foreach(request()->except('sort', 'page') as $key => $values)
                         @if(is_array($values))
@@ -281,8 +281,11 @@
                                             ({{ $product->offer_duration_nights }} nachten)
                                         @endif
                                     @endif
-                                    @if(isset($product->cruiseship_name) && isset($product->cruiseline_name))
-                                        <br><i class="fa-sharp fa-solid fa-ship"></i> {{ $product->cruiseship_name }} {{ $product->cruiseline_name }}
+                                    @if(isset($product->cruiseline_name))
+                                        <br><i class="fa-sharp fa-solid fa-building"></i> {{ $product->cruiseline_name }}
+                                    @endif
+                                    @if(isset($product->cruiseship_name))
+                                        <br><i class="fa-sharp fa-solid fa-ship"></i> {{ $product->cruiseship_name }}
                                     @endif
                                     @if(isset($product->holidaytype_is_minicruise) && $product->holidaytype_is_minicruise > 0)
                                         <br><i class="fa-sharp fa-solid fa-water"></i> minicruise

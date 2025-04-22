@@ -20,8 +20,8 @@ class AffiliateCruiselineController extends Controller
      */
     public function index()
     {
-        $cruiselines = AffiliateCruiseline::select('name', 'slogan', 'slug', 'url_logo')
-            ->where('is_blocked', 0) // Select only non-blocked cruiselines
+        $cruiselines = AffiliateCruiseline::nonBlocked()
+            ->select('name', 'slogan', 'slug', 'url_logo')
             ->orderBy('name', 'asc') // Sort by name in ascending order
             ->get();
 
@@ -35,12 +35,12 @@ class AffiliateCruiselineController extends Controller
      */
     public function all()
     {
-        return AffiliateCruiseline::select('slug', 'name')
-            ->where('is_blocked', 0)
+        return AffiliateCruiseline::nonBlocked()
+            ->select('slug', 'name')
             ->orderBy('name', 'asc') // Sort by name in ascending order
             ->get();
     }
-    
+
     /**
      * Display the details of a specific cruiseline based on its slug.
      *
@@ -50,7 +50,11 @@ class AffiliateCruiselineController extends Controller
      */
     public function show($slug)
     {
+        // Use the firstOrFail method to retrieve the cruiseline or throw an exception
         $cruiseline = AffiliateCruiseline::where('slug', $slug)->firstOrFail();
+
+        // Load related cruiseships for the cruiseline
+        $cruiseline->load('cruiseships');
 
         return view('cruiseline-detail', compact('cruiseline'));
     }
