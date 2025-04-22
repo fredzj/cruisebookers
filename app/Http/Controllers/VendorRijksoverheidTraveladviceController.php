@@ -6,8 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\VendorRijksoverheidTraveladvice;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class VendorRijksoverheidTraveladviceController
+ * 
+ * Handles operations related to travel advice, including listing,
+ * retrieving details, and filtering by countries with products.
+ */
 class VendorRijksoverheidTraveladviceController extends Controller
 {
+    /**
+     * Display a listing of travel advice for countries with products.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         // Get the list of countries for which products exist
@@ -25,18 +36,30 @@ class VendorRijksoverheidTraveladviceController extends Controller
         return view('traveladvices', compact('traveladvices'));
     }
 
+    /**
+     * Retrieve all travel advice for countries with products.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function all()
     {
-    // Get the list of countries for which products exist
-    $countriesWithProducts = DB::table('affiliate_products_loaded_searchpage')->pluck('destination_country_name');
+        // Get the list of countries for which products exist
+        $countriesWithProducts = DB::table('affiliate_products_loaded_searchpage')->pluck('destination_country_name');
 
-    // Return only travel advice for countries with products
-    return VendorRijksoverheidTraveladvice::select('id', 'location')
-        ->whereIn('location', $countriesWithProducts) // Filter by countries with products
-        ->orderBy('id', 'asc') // Sort by id in ascending order
-        ->get();
+        // Return only travel advice for countries with products
+        return VendorRijksoverheidTraveladvice::select('id', 'location')
+            ->whereIn('location', $countriesWithProducts) // Filter by countries with products
+            ->orderBy('id', 'asc') // Sort by id in ascending order
+            ->get();
     }
     
+    /**
+     * Display the details of travel advice for a specific country.
+     *
+     * @param string $id The ID or location of the travel advice.
+     * @return \Illuminate\View\View
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
     public function show($id)
     {
         // Fetch travel advice details for the selected country

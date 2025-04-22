@@ -12,6 +12,59 @@
             <h5>Filters</h5>
             <form method="GET" action="{{ route('search') }}" id="filter-form">
 
+                <!-- Cruisetype Facet -->
+                <div class="mb-3">
+                    <h6>Cruisetype</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="zeecruise" id="seacruise" {{ in_array('zeecruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="seacruise">
+                            Zeecruise
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="riviercruise" id="rivercruise" {{ in_array('riviercruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="rivercruise">
+                            Riviercruise
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="minicruise" id="minicruise" {{ in_array('minicruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="minicruise">
+                            Minicruise
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Departure Year and Month Filter -->
+                <div class="mb-3">
+                    <h6>Vertrekdatum</h6>
+                    <div class="accordion" id="departureAccordion">
+                        @foreach($facets['monthsByYear'] as $year => $months)
+                            <div class="mb-2">
+                                <!-- Year Checkbox -->
+                                <div class="form-check">
+                                    <input class="form-check-input departure-year-checkbox" type="checkbox" name="departure_year[]" value="{{ $year }}" id="departure-year-{{ $year }}" {{ in_array($year, request('departure_year', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="departure-year-{{ $year }}">
+                                        {{ $year }}
+                                    </label>
+                                </div>
+                            
+                                <!-- Month Checkboxes -->
+                                <div class="ms-3 months-container" data-year="{{ $year }}" style="display: {{ in_array($year, request('departure_year', [])) ? 'block' : 'none' }};">
+                                    @foreach($months as $month)
+                                        <div class="form-check">
+                                            <input class="form-check-input departure-month-checkbox" type="checkbox" name="departure_month[]" value="{{ $month->month }}" id="departure-month-{{ $year }}-{{ $month->month }}" {{ in_array($month->month, request('departure_month', [])) ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="departure-month-{{ $year }}-{{ $month->month }}">
+                                                {{ DateTime::createFromFormat('!m', $month->month)->format('F') }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
                 <!-- Continent and Country Facets -->
                 <div class="mb-3">
                     <h6>Bestemming</h6>
@@ -22,7 +75,7 @@
                             <div class="form-check">
                                 <input class="form-check-input continent-checkbox" type="checkbox" name="continent[]" value="{{ $continent }}" id="continent-{{ $continent }}" {{ in_array($continent, request('continent', [])) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="continent-{{ $continent }}">
-                                    <strong>{{ $continent }}</strong>
+                                    {{ $continent }}
                                 </label>
                             </div>
             
@@ -96,6 +149,42 @@
             <div class="mb-3">
                 <h6>Geselecteerde Filters:</h6>
                 <div>
+                    <!-- Cruisetype Badges -->
+                    @if(request()->has('cruiseline_category'))
+                        @foreach(request('cruiseline_category') as $category)
+                            <span class="badge bg-primary me-2">
+                                {{ ucfirst($category) }}
+                                <a href="{{ route('search', array_merge(request()->except('cruiseline_category', 'page'), ['cruiseline_category' => array_diff(request('cruiseline_category'), [$category])])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+
+                    <!-- Departure Year Badge -->
+                    @if(request()->has('departure_year'))
+                        @foreach(request('departure_year') as $year)
+                            <span class="badge bg-warning me-2">
+                                Jaar: {{ $year }}
+                                <a href="{{ route('search', request()->except(['departure_year', 'page'])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+                        
+                    <!-- Departure Month Badge -->
+                    @if(request()->has('departure_month'))
+                        @foreach(request('departure_month') as $month)
+                            <span class="badge bg-warning me-2">
+                                Maand: {{ DateTime::createFromFormat('!m', $month)->format('F') }}
+                                <a href="{{ route('search', request()->except(['departure_month', 'page'])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+
                     <!-- Continent Badges -->
                     @if(request()->has('continent'))
                         @foreach(request('continent') as $continent)
@@ -145,8 +234,8 @@
                     @endif
                         
                     <!-- Clear All Filters -->
-                    @if(request()->hasAny(['continent', 'country', 'cruiseline', 'cruiseship']))
-                        <a href="{{ route('search', request()->except(['continent', 'country', 'cruiseline', 'cruiseship', 'page'])) }}" class="btn btn-link text-danger">
+                    @if(request()->hasAny(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship']))
+                        <a href="{{ route('search', request()->except(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship', 'page'])) }}" class="btn btn-link text-danger">
                             Verwijder alle filters
                         </a>
                     @endif
@@ -156,6 +245,15 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <p class="mb-0">{{ $totalResults }} cruises gevonden</p>
                 <form method="GET" action="{{ route('search') }}">
+                    @foreach(request()->except('sort', 'page') as $key => $values)
+                        @if(is_array($values))
+                            @foreach($values as $value)
+                                <input type="hidden" name="{{ $key }}[]" value="{{ $value }}">
+                            @endforeach
+                        @else
+                            <input type="hidden" name="{{ $key }}" value="{{ $values }}">
+                        @endif
+                    @endforeach
                     <select name="sort" class="form-select" onchange="this.form.submit()">
                         <option value="price_asc" {{ $sortBy == 'price_asc' ? 'selected' : '' }}>Prijs: laag - hoog</option>
                         <option value="price_desc" {{ $sortBy == 'price_desc' ? 'selected' : '' }}>Prijs: hoog - laag</option>
@@ -183,27 +281,29 @@
                                             ({{ $product->offer_duration_nights }} nachten)
                                         @endif
                                     @endif
-                                    @if(isset($product->offer_cruiseship) && isset($product->offer_cruiseline))
-                                        <br><i class="fa-sharp fa-solid fa-ship"></i> {{ $product->offer_cruiseship }} {{ $product->offer_cruiseline }}</p>
+                                    @if(isset($product->cruiseship_name) && isset($product->cruiseline_name))
+                                        <br><i class="fa-sharp fa-solid fa-ship"></i> {{ $product->cruiseship_name }} {{ $product->cruiseline_name }}
+                                    @endif
+                                    @if(isset($product->holidaytype_is_minicruise) && $product->holidaytype_is_minicruise > 0)
+                                        <br><i class="fa-sharp fa-solid fa-water"></i> minicruise
                                     @endif
                                     @if(isset($product->holidaytype_is_rivercruise) && $product->holidaytype_is_rivercruise > 0)
-                                        <br><i class="fa-sharp fa-solid fa-water"></i> riviercruise</p>
+                                        <br><i class="fa-sharp fa-solid fa-water"></i> riviercruise
                                     @endif
                                     @if(isset($product->holidaytype_is_seacruise) && $product->holidaytype_is_seacruise > 0)
-                                        <br><i class="fa-sharp fa-solid fa-water"></i> zeecruise</p>
+                                        <br><i class="fa-sharp fa-solid fa-water"></i> zeecruise
                                     @endif
-                                    @if(isset($product->accommodation_rating) && $product->accommodation_rating > 0)
-                                        <br>Waardering: {{ $product->accommodation_rating }} / 10</p>
-                                    @endif
-                                    <br>
                                     @if(isset($product->holidaytype_is_all_inclusives) && $product->holidaytype_is_all_inclusives > 0)
-                                        <i class="fa-sharp fa-solid fa-martini-glass-citrus"></i> all-inclusive</p>
+                                        <i class="fa-sharp fa-solid fa-martini-glass-citrus"></i> all-inclusive
                                     @endif
-                                    @if(isset($product->holidaytype_is_lastminute) && $product->holidaytype_is_lastminute > 0)
-                                        <i class="fa-sharp fa-solid fa-clock"></i> lastminute</p>
+                                    @if(isset($product->holidaytype_is_lastminutes) && $product->holidaytype_is_lastminutes > 0)
+                                        <i class="fa-sharp fa-solid fa-clock"></i> lastminute
                                     @endif
                                     @if(isset($product->price) && $product->price > 0)
-                                        <br>€{{ number_format($product->price, 2) }}</p>
+                                        <br>
+                                        <span class="badge bg-success">
+                                            <i class="fa-solid fa-tag"></i> €{{ number_format($product->price, 2) }}
+                                        </span>
                                     @endif
                                 </p>
                             </div>
@@ -225,6 +325,51 @@
                     checkboxes.forEach(function (checkbox) {
                         checkbox.addEventListener('change', function () {
                             form.submit();
+                        });
+                    });
+
+                    const yearCheckboxes = document.querySelectorAll('.departure-year-checkbox');
+                    const monthsContainers = document.querySelectorAll('.months-container');
+
+                    // Toggle visibility of months based on year selection
+                    yearCheckboxes.forEach(function (checkbox) {
+                        checkbox.addEventListener('change', function () {
+                            const year = checkbox.value;
+                            const container = document.querySelector(`.months-container[data-year="${year}"]`);
+                            if (checkbox.checked) {
+                                container.style.display = 'block';
+                                // Check all months if the year is checked
+                                container.querySelectorAll('.departure-month-checkbox').forEach(function (monthCheckbox) {
+                                    monthCheckbox.checked = true;
+                                });
+                            } else {
+                                // Uncheck all months if the year is unchecked
+                                container.querySelectorAll('.departure-month-checkbox').forEach(function (monthCheckbox) {
+                                    monthCheckbox.checked = false;
+                                });
+                                container.style.display = 'none';
+                            }
+                        });
+                    });
+
+                    // Ensure year checkbox is checked if any month is selected
+                    monthsContainers.forEach(function (container) {
+                        const year = container.getAttribute('data-year');
+                        const yearCheckbox = document.querySelector(`#departure-year-${year}`);
+                        const monthCheckboxes = container.querySelectorAll('.departure-month-checkbox');
+                    
+                        monthCheckboxes.forEach(function (checkbox) {
+                            checkbox.addEventListener('change', function () {
+                                const allChecked = Array.from(monthCheckboxes).every(cb => cb.checked);
+                                const anyChecked = Array.from(monthCheckboxes).some(cb => cb.checked);
+                            
+                                if (anyChecked) {
+                                    yearCheckbox.checked = true;
+                                    container.style.display = 'block';
+                                } else if (!anyChecked) {
+                                    yearCheckbox.checked = false;
+                                }
+                            });
                         });
                     });
 

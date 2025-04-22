@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/89cc921f34.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark xbg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('images/icon-192.png') }}" alt="Logo" style="height: 40px;">
@@ -34,7 +34,7 @@
         @yield('content')
     </main>
 
-    <footer class="bg-dark text-white py-4">
+    <footer class="xbg-dark text-white py-4">
         <div class="container">
             <div class="row">
                 <!-- Column 1 -->

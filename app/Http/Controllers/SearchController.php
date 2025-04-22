@@ -5,8 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class SearchController
+ * 
+ * Handles search functionality, including filtering, sorting, and retrieving
+ * products and facets for the search page.
+ */
 class SearchController extends Controller
 {
+    /**
+     * Display the search results based on filters and sorting.
+     *
+     * @param \Illuminate\Http\Request $request The HTTP request containing filters and sorting options.
+     * @return \Illuminate\View\View The search results view with products and facets.
+     */
     public function index(Request $request)
     {
         // Default sorting
@@ -25,6 +37,15 @@ class SearchController extends Controller
         $query = DB::table('affiliate_products_loaded_searchpage');
 
         // Apply filters
+        if ($request->has('cruiseline_category')) {
+            $query->where('cruiseline_category', $request->get('cruiseline_category'));
+        }
+        if ($request->has('departure_year')) {
+            $query->whereYear('offer_departure_date', $request->get('departure_year'));
+        }
+        if ($request->has('departure_month')) {
+            $query->whereMonth('offer_departure_date', $request->get('departure_month'));
+        }
         if ($request->has('continent')) {
             $query->where('destination_continent_name', $request->get('continent'));
         }
@@ -46,6 +67,13 @@ class SearchController extends Controller
 
         // Fetch distinct values for facets
         $facets = [
+            'cruiseline_categories' => DB::table('affiliate_products_loaded_searchpage')
+                ->select('cruiseline_category')
+                ->whereNotNull('cruiseline_category') // Ignore null values
+                ->distinct()
+                ->orderBy('cruiseline_category', 'desc')
+                ->pluck('cruiseline_category'),
+
             'continents' => DB::table('affiliate_products_loaded_searchpage')
                 ->select('destination_continent_name')
                 ->whereNotNull('destination_continent_name') // Ignore null values
@@ -93,7 +121,23 @@ class SearchController extends Controller
             ->orderBy('cruiseship_name', 'asc')
             ->get()
             ->groupBy('cruiseline_name');
+            
+        $facets['departureYears'] = DB::table('affiliate_products_loaded_searchpage')
+            ->select(DB::raw('YEAR(offer_departure_date) as year'))
+            ->whereNotNull('offer_departure_date')
+            ->distinct()
+            ->orderBy('year', 'asc')
+            ->pluck('year');
         
+        $facets['monthsByYear'] = DB::table('affiliate_products_loaded_searchpage')
+            ->select(DB::raw('YEAR(offer_departure_date) as year'), DB::raw('MONTH(offer_departure_date) as month'))
+            ->whereNotNull('offer_departure_date')
+            ->distinct()
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->get()
+            ->groupBy('year');     
+
         // Ensure all cruiselines are included, even if they don't have cruiseships
         foreach ($facets['cruiselines'] as $cruiseline) {
             if (!isset($facets['cruiseshipsByCruiseline'][$cruiseline])) {

@@ -22,6 +22,17 @@
             <h1>{{ $merchant->name }}</h1>
             <p>{{ $merchant->type }}</p>
             <p>{{ $merchant->description }}</p>
+
+            <!-- CTA Button -->
+            @if($merchant->has_products)
+                <a href="{{ route('search', ['merchant' => [$merchant->name]]) }}" class="btn btn-primary mt-4">
+                    Bekijk cruises van {{ $merchant->name }}
+                </a>
+            @else
+                <a href="{{ $merchant->url_deeplink }}" class="btn btn-secondary mt-4" target="_blank">
+                    Bezoek de website van {{ $merchant->name }}
+                </a>
+            @endif
         </div>
     </div>
 </div>

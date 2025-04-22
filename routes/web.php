@@ -32,6 +32,7 @@ Route::get('/privacyverklaring', function () {
 })->name('privacyverklaring');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/search/riviercruises', [SearchController::class, 'riverCruises'])->name('search.rivercruises');
 
 Route::get('/sitemap', function () {
     $merchants = app(AffiliateNetworkMerchantController::class)->all();

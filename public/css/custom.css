@@ -28,22 +28,134 @@
     color: #333;
 }
 
-footer {
-    background-color: #151F4C;
-}
-
-footer a {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #FF6F61;
-    text-decoration: underline;
-}
-
 img.card-img-top.search-result-image {
     aspect-ratio: 16 / 9;
     inline-size: 100%;
     object-fit: cover;
+}
+
+
+
+/* Primary Colors */
+:root {
+    --ocean-blue: #0077B6;
+    --sky-blue: #00B4D8;
+    --sand-beige: #F4A261;
+    --sunset-orange: #E76F51;
+    --seafoam-green: #2A9D8F;
+    --golden-yellow: #FFD166;
+    --dark-navy: #023047;
+    --white: #FFFFFF;
+}
+
+/* General Styles */
+body {
+    background-color: var(--white);
+    color: var(--dark-navy);
+    font-family: Arial, sans-serif;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--ocean-blue);
+    border-color: var(--ocean-blue);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--sky-blue);
+    border-color: var(--sky-blue);
+}
+
+.btn-secondary {
+    background-color: var(--sand-beige);
+    border-color: var(--sand-beige);
+    color: var(--dark-navy);
+}
+
+.btn-secondary:hover {
+    background-color: var(--sunset-orange);
+    border-color: var(--sunset-orange);
+    color: var(--white);
+}
+
+/* Badges */
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5em 0.75em;
+}
+
+.badge.bg-primary {
+    background-color: var(--ocean-blue);
+    color: var(--white);
+}
+
+.badge.bg-warning {
+    background-color: var(--golden-yellow);
+    color: var(--dark-navy);
+}
+
+.badge.bg-success {
+    background-color: var(--seafoam-green);
+    color: var(--white);
+}
+
+.badge.bg-info {
+    background-color: var(--sky-blue);
+    color: var(--white);
+}
+
+.badge.bg-danger {
+    background-color: var(--sunset-orange);
+    color: var(--white);
+}
+
+/* Cards */
+.card {
+    xborder: 1px solid var(--sky-blue);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: var(--ocean-blue);
+    font-weight: bold;
+}
+
+.card-text {
+    color: var(--dark-navy);
+}
+
+/* Links */
+a {
+    color: var(--ocean-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--sky-blue);
+    text-decoration: underline;
+}
+
+
+
+.navbar {
+    background-color: #023047; /* Dark Navy */
+    color: #FFFFFF;
+    padding: 1rem;
+}
+
+footer {
+    background-color: #023047; /* Dark Navy */
+    color: #023047;
+    padding: 1rem;
+    text-align: center;
+}
+
+.navbar a, footer a {
+    text-decoration: none;
+}
+
+.navbar a:hover, footer a:hover {
+    text-decoration: underline;
 }

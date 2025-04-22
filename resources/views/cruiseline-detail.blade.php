@@ -23,6 +23,11 @@
             <p class="lead">{{ $cruiseline->lead_paragraph }}</p>
             {!! $cruiseline->introduction !!}
             {!! $cruiseline->description !!}
+
+            <!-- CTA Button -->
+            <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="btn btn-primary mt-4">
+                Bekijk cruises van {{ $cruiseline->name }}
+            </a>
         </div>
     </div>
 </div>
