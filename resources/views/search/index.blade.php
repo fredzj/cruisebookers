@@ -287,13 +287,13 @@
                                     @if(isset($product->cruiseship_name))
                                         <br><i class="fa-sharp fa-solid fa-ship"></i> {{ $product->cruiseship_name }}
                                     @endif
-                                    @if(isset($product->holidaytype_is_minicruise) && $product->holidaytype_is_minicruise > 0)
+                                    @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'minicruise')
                                         <br><i class="fa-sharp fa-solid fa-water"></i> minicruise
                                     @endif
-                                    @if(isset($product->holidaytype_is_rivercruise) && $product->holidaytype_is_rivercruise > 0)
+                                    @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'riviercruise')
                                         <br><i class="fa-sharp fa-solid fa-water"></i> riviercruise
                                     @endif
-                                    @if(isset($product->holidaytype_is_seacruise) && $product->holidaytype_is_seacruise > 0)
+                                    @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'zeecruise')
                                         <br><i class="fa-sharp fa-solid fa-water"></i> zeecruise
                                     @endif
                                     @if(isset($product->holidaytype_is_all_inclusives) && $product->holidaytype_is_all_inclusives > 0)

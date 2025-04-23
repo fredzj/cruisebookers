@@ -1,7 +1,28 @@
+.hero {
+    position: relative;
+    width: 100%; /* Full width */
+    height: 60vh; /* Adjust height as needed */
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%; /* Ensure the image spans the full width */
+    height: 100%; /* Ensure the image spans the full height */
+    object-fit: cover; /* Cover the container without distortion */
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
 
 .card img {
     max-height: 150px;
-    object-fit: contain;
+    xobject-fit: contain;
 }
 
 .card {
@@ -13,19 +34,27 @@
 
 .card:hover {
     transform: translateY(-5px);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card-img-top {
-    max-height: 150px;
-    object-fit: contain;
+    xmax-height: 150px;
+    xobject-fit: contain;
 }
-
+.card-img-top {
+    width: 100%; /* Ensure the image spans the full width of the card */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensure the image covers the container */
+    border-radius: 0; /* Remove any border radius for a clean look */
+}
 .card-title {
     font-size: 1rem;
     font-weight: bold;
-    color: #333;
+    color: var(--ocean-blue); /* Use the primary color */
+}
+
+.card-text {
+    color: var(--dark-navy); /* Use the primary color */
 }
 
 img.card-img-top.search-result-image {
@@ -33,8 +62,6 @@ img.card-img-top.search-result-image {
     inline-size: 100%;
     object-fit: cover;
 }
-
-
 
 /* Primary Colors */
 :root {
@@ -110,22 +137,6 @@ body {
     color: var(--white);
 }
 
-/* Cards */
-.card {
-    xborder: 1px solid var(--sky-blue);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-title {
-    color: var(--ocean-blue);
-    font-weight: bold;
-}
-
-.card-text {
-    color: var(--dark-navy);
-}
-
 /* Links */
 a {
     color: var(--ocean-blue);
@@ -137,25 +148,71 @@ a:hover {
     text-decoration: underline;
 }
 
-
-
+/* Navbar */
 .navbar {
-    background-color: #023047; /* Dark Navy */
-    color: #FFFFFF;
+    background-color: var(--dark-navy);
+    color: var(--white);
     padding: 1rem;
 }
 
-footer {
-    background-color: #023047; /* Dark Navy */
-    color: #023047;
-    padding: 1rem;
-    text-align: center;
-}
-
-.navbar a, footer a {
+.navbar a {
+    color: var(--white);
     text-decoration: none;
 }
 
-.navbar a:hover, footer a:hover {
+.navbar a:hover {
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-navy);
+    color: var(--white);
+    padding: 1rem;
+    xtext-align: center;
+}
+
+footer a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+footer a:hover {
     text-decoration: underline;
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    background-color: #f8f9fa; /* Optional: Add a background color */
+    padding: 10px 0;
+}
+
+.marquee {
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 60s linear infinite;
+}
+
+.marquee-content a {
+    display: inline-block;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }

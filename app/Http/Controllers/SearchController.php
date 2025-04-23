@@ -37,15 +37,6 @@ class SearchController extends Controller
         $query = DB::table('affiliate_products_loaded_searchpage');
 
         // Apply filters
-        if ($request->has('cruiseline_category')) {
-            $query->where('cruiseline_category', $request->get('cruiseline_category'));
-        }
-        if ($request->has('departure_year')) {
-            $query->whereYear('offer_departure_date', $request->get('departure_year'));
-        }
-        if ($request->has('departure_month')) {
-            $query->whereMonth('offer_departure_date', $request->get('departure_month'));
-        }
         if ($request->has('continent')) {
             $query->where('destination_continent_name', $request->get('continent'));
         }
@@ -57,6 +48,51 @@ class SearchController extends Controller
         }
         if ($request->has('cruiseship')) {
             $query->whereIn('cruiseship_name', $request->get('cruiseship'));
+        }
+        if ($request->has('cruiseline_category')) {
+            $query->where('cruiseline_category', $request->get('cruiseline_category'));
+        }
+        if ($request->has('departure_year')) {
+            $query->whereYear('offer_departure_date', $request->get('departure_year'));
+        }
+        if ($request->has('departure_month')) {
+            $query->whereMonth('offer_departure_date', $request->get('departure_month'));
+        }
+        if ($request->has('departure_month')) {
+            $query->whereMonth('offer_departure_date', $request->get('departure_month'));
+        }
+        if ($request->has('holidaytype_is_rivercruise_danube')) {
+            $query->where('holidaytype_is_rivercruise_danube', $request->get('holidaytype_is_rivercruise_danube'));
+        }
+        if ($request->has('holidaytype_is_rivercruise_moselle')) {
+            $query->where('holidaytype_is_rivercruise_moselle', $request->get('holidaytype_is_rivercruise_moselle'));
+        }
+        if ($request->has('holidaytype_is_rivercruise_nile')) {
+            $query->where('holidaytype_is_rivercruise_nile', $request->get('holidaytype_is_rivercruise_nile'));
+        }
+        if ($request->has('holidaytype_is_rivercruise_rhine')) {
+            $query->where('holidaytype_is_rivercruise_rhine', $request->get('holidaytype_is_rivercruise_rhine'));
+        }
+        if ($request->has('holidaytype_is_rivercruise_volga')) {
+            $query->where('holidaytype_is_rivercruise_volga', $request->get('holidaytype_is_rivercruise_volga'));
+        }
+        if ($request->has('holidaytype_is_seacruise_bluecruise')) {
+            $query->where('holidaytype_is_seacruise_bluecruise', $request->get('holidaytype_is_seacruise_bluecruise'));
+        }
+        if ($request->has('holidaytype_is_seacruise_caribbean')) {
+            $query->where('holidaytype_is_seacruise_caribbean', $request->get('holidaytype_is_seacruise_caribbean'));
+        }
+        if ($request->has('holidaytype_is_seacruise_hurtigruten')) {
+            $query->where('holidaytype_is_seacruise_hurtigruten', $request->get('holidaytype_is_seacruise_hurtigruten'));
+        }
+        if ($request->has('holidaytype_is_seacruise_mediterranean')) {
+            $query->where('holidaytype_is_seacruise_mediterranean', $request->get('holidaytype_is_seacruise_mediterranean'));
+        }
+        if ($request->has('holidaytype_is_seacruise_sailing')) {
+            $query->where('holidaytype_is_seacruise_sailing', $request->get('holidaytype_is_seacruise_sailing'));
+        }
+        if ($request->has('holidaytype_is_seacruise_world')) {
+            $query->where('holidaytype_is_seacruise_world', $request->get('holidaytype_is_seacruise_world'));
         }
         if ($request->has('merchant')) {
             $query->where('merchant_name', $request->get('merchant'));

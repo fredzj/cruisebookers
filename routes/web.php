@@ -3,12 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AffiliateCruiselineController;
 use App\Http\Controllers\AffiliateNetworkMerchantController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VendorRijksoverheidTraveladviceController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/cruisemaatschappijen', [AffiliateCruiselineController::class, 'index'])->name('cruiselines');
 Route::get('/cruisemaatschappijen/{slug}', [AffiliateCruiselineController::class, 'show'])->name('cruiselines.show');

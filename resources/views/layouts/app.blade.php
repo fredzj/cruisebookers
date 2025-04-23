@@ -24,7 +24,6 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('cruiselines') }}">Cruisemaatschappijen</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('partners') }}">Reisorganisaties</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('traveladvices') }}">Reisadviezen</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('sitemap') }}">Sitemap</a></li>
                 </ul>
             </div>
         </div>
@@ -34,7 +33,7 @@
         @yield('content')
     </main>
 
-    <footer class="xbg-dark text-white py-4">
+    <footer class="text-white py-4">
         <div class="container">
             <div class="row">
                 <!-- Column 1 -->
@@ -45,6 +44,7 @@
                         <li><a href="{{ route('privacyverklaring') }}" class="text-white">Privacyverklaring</a></li>
                         <li><a href="{{ route('cookieverklaring') }}" class="text-white">Cookieverklaring</a></li>
                         <li><a href="{{ route('disclaimer') }}" class="text-white">Disclaimer</a></li>
+                        <li><a href="{{ route('sitemap') }}" class="text-white">Sitemap</a></li>
                     </ul>
                     <div class="mt-3"></div>
                     <ul class="list-unstyled">
@@ -55,8 +55,30 @@
                 </div>
 
                 <!-- Columns 2-6 -->
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <h5>Zeecruises</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('search', ['continent' => ['Antarctica']]) }}" class="text-white">Antarctica Cruises</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_seacruise_bluecruise' => ['1']]) }}" class="text-white">Blue Cruises</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_seacruise_caribbean' => ['1']]) }}" class="text-white">Caraïbische Cruises</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_seacruise_hurtigruten' => ['1']]) }}" class="text-white">Hurtigruten</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_seacruise_mediterranean' => ['1']]) }}" class="text-white">Middellandse Zee Cruises</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_seacruise_sailing' => ['1']]) }}" class="text-white">Zeilcruises</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_seacruise_world' => ['1']]) }}" class="text-white">Wereldcruises</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>Riviercruises Europa</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('search', ['holidaytype_is_rivercruise_danube' => ['1']]) }}" class="text-white">Donaucruises</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_rivercruise_moselle' => ['1']]) }}" class="text-white">Moezelcruises</a></li>
+                        <li><a href="{{ route('search', ['holidaytype_is_rivercruise_rhine' => ['1']]) }}" class="text-white">Rijncruises</a></li>
+                    </ul>
+                    <h5>Riviercruises Egypte</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('search', ['holidaytype_is_rivercruise_nile' => ['1']]) }}" class="text-white">Nijlcruises</a></li>
+                    </ul>
+                </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-2"></div>
