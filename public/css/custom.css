@@ -22,7 +22,7 @@
 
 .card img {
     max-height: 150px;
-    xobject-fit: contain;
+    /*object-fit: contain;*/
 }
 
 .card {
@@ -36,11 +36,12 @@
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
-
+/*
 .card-img-top {
-    xmax-height: 150px;
-    xobject-fit: contain;
-}
+    max-height: 150px;
+    object-fit: contain;
+}*/
+
 .card-img-top {
     width: 100%; /* Ensure the image spans the full width of the card */
     height: auto; /* Maintain the aspect ratio */
@@ -169,7 +170,7 @@ footer {
     background-color: var(--dark-navy);
     color: var(--white);
     padding: 1rem;
-    xtext-align: center;
+    /*text-align: center;*/
 }
 
 footer a {
