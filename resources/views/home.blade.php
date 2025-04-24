@@ -150,7 +150,7 @@
                 <div class="card h-100">
                     <img src="{{ asset('images/riviercruise-rijn.jpg') }}" class="card-img-top" alt="Rijn Cruises">
                     <div class="card-body">
-                        <h5 class="card-title">Rijn Cruises</h5>
+                        <h5 class="card-title">Rijncruises</h5>
                         <p class="card-text">Beleef de romantiek van de Rijn met zijn kastelen en wijngaarden.</p>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                 <div class="card h-100">
                     <img src="{{ asset('images/riviercruise-moezel.jpg') }}" class="card-img-top" alt="Moezel Cruises">
                     <div class="card-body">
-                        <h5 class="card-title">Moezel Cruises</h5>
+                        <h5 class="card-title">Moezelcruises</h5>
                         <p class="card-text">Geniet van de schilderachtige Moezelvallei en haar wijngaarden.</p>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                 <div class="card h-100">
                     <img src="{{ asset('images/riviercruise-donau.jpg') }}" class="card-img-top" alt="Donau Cruises">
                     <div class="card-body">
-                        <h5 class="card-title">Donau Cruises</h5>
+                        <h5 class="card-title">Donaucruises</h5>
                         <p class="card-text">Ontdek de historische steden langs de majestueuze Donau.</p>
                     </div>
                 </div>

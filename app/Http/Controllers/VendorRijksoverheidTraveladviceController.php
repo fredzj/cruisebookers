@@ -74,7 +74,7 @@ class VendorRijksoverheidTraveladviceController extends Controller
                 'vendor_rijksoverheid_nl_traveladvice.title',
                 'vendor_rijksoverheid_nl_traveladvice_files.fileurl'
             )
-            ->where('vendor_rijksoverheid_nl_traveladvice.location', $id)
+            ->where('vendor_rijksoverheid_nl_traveladvice.id', $id)
             ->where('vendor_rijksoverheid_nl_traveladvice_files.maptype', 'legend')
             ->firstOrFail();
 
