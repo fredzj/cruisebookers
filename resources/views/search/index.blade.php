@@ -4,6 +4,14 @@
 
 @section('content')
 <div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Zoekresultaten</li>
+        </ol>
+    </nav>
+
     <h1 class="mb-4">Zoekresultaten</h1>
 
     <!-- Filters -->
@@ -266,51 +274,53 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 @foreach($products as $product)
                     <div class="col">
-                        <div class="card h-100">
-                            <img src="{{ $product->image }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->name }}</h5>
-                                <p class="card-text">
-                                    <br><i class="fa-solid fa-globe"></i> {{ $product->destination_country_name }}
-                                    @if(isset($product->offer_departure_date))
-                                        <br><i class="fa-solid fa-calendar"></i> {{ $product->offer_departure_date }}
-                                    @endif
-                                    @if(isset($product->offer_duration_days) && $product->offer_duration_days > 0)
-                                        <br><i class="fa-solid fa-calendar-days"></i> {{ $product->offer_duration_days }} dagen
-                                        @if(isset($product->offer_duration_nights) && $product->offer_duration_nights > 0)
-                                            ({{ $product->offer_duration_nights }} nachten)
+                        <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="text-decoration-none">
+                            <div class="card h-100">
+                                <img src="{{ $product->image }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                    <p class="card-text">
+                                        <br><i class="fa-solid fa-globe"></i> {{ $product->destination_country_name }}
+                                        @if(isset($product->offer_departure_date))
+                                            <br><i class="fa-solid fa-calendar"></i> {{ $product->offer_departure_date }}
                                         @endif
-                                    @endif
-                                    @if(isset($product->cruiseline_name))
-                                        <br><i class="fa-sharp fa-solid fa-building"></i> {{ $product->cruiseline_name }}
-                                    @endif
-                                    @if(isset($product->cruiseship_name))
-                                        <br><i class="fa-sharp fa-solid fa-ship"></i> {{ $product->cruiseship_name }}
-                                    @endif
-                                    @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'minicruise')
-                                        <br><i class="fa-sharp fa-solid fa-water"></i> minicruise
-                                    @endif
-                                    @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'riviercruise')
-                                        <br><i class="fa-sharp fa-solid fa-water"></i> riviercruise
-                                    @endif
-                                    @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'zeecruise')
-                                        <br><i class="fa-sharp fa-solid fa-water"></i> zeecruise
-                                    @endif
-                                    @if(isset($product->holidaytype_is_all_inclusives) && $product->holidaytype_is_all_inclusives > 0)
-                                        <i class="fa-sharp fa-solid fa-martini-glass-citrus"></i> all-inclusive
-                                    @endif
-                                    @if(isset($product->holidaytype_is_lastminutes) && $product->holidaytype_is_lastminutes > 0)
-                                        <i class="fa-sharp fa-solid fa-clock"></i> lastminute
-                                    @endif
-                                    @if(isset($product->price) && $product->price > 0)
-                                        <br>
-                                        <span class="badge bg-success">
-                                            <i class="fa-solid fa-tag"></i> €{{ number_format($product->price, 2) }}
-                                        </span>
-                                    @endif
-                                </p>
+                                        @if(isset($product->offer_duration_days) && $product->offer_duration_days > 0)
+                                            <br><i class="fa-solid fa-calendar-days"></i> {{ $product->offer_duration_days }} dagen
+                                            @if(isset($product->offer_duration_nights) && $product->offer_duration_nights > 0)
+                                                ({{ $product->offer_duration_nights }} nachten)
+                                            @endif
+                                        @endif
+                                        @if(isset($product->cruiseline_name))
+                                            <br><i class="fa-sharp fa-solid fa-building"></i> {{ $product->cruiseline_name }}
+                                        @endif
+                                        @if(isset($product->cruiseship_name))
+                                            <br><i class="fa-sharp fa-solid fa-ship"></i> {{ $product->cruiseship_name }}
+                                        @endif
+                                        @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'minicruise')
+                                            <br><i class="fa-sharp fa-solid fa-water"></i> minicruise
+                                        @endif
+                                        @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'riviercruise')
+                                            <br><i class="fa-sharp fa-solid fa-water"></i> riviercruise
+                                        @endif
+                                        @if(isset($product->cruiseline_category) && $product->cruiseline_category == 'zeecruise')
+                                            <br><i class="fa-sharp fa-solid fa-water"></i> zeecruise
+                                        @endif
+                                        @if(isset($product->holidaytype_is_all_inclusives) && $product->holidaytype_is_all_inclusives > 0)
+                                            <i class="fa-sharp fa-solid fa-martini-glass-citrus"></i> all-inclusive
+                                        @endif
+                                        @if(isset($product->holidaytype_is_lastminutes) && $product->holidaytype_is_lastminutes > 0)
+                                            <i class="fa-sharp fa-solid fa-clock"></i> lastminute
+                                        @endif
+                                        @if(isset($product->price) && $product->price > 0)
+                                            <br>
+                                            <span class="badge bg-success">
+                                                <i class="fa-solid fa-tag"></i> €{{ number_format($product->price, 2) }}
+                                            </span>
+                                        @endif
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

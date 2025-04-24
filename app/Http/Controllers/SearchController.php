@@ -21,6 +21,29 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
+        $query = DB::table('affiliate_products_loaded_searchpage');
+
+        // Apply search term filter
+        if ($request->has('search')) {
+            $searchTerms = preg_split('/\s+/', $request->get('search')); // Split input by spaces
+            $query->where(function ($q) use ($searchTerms) {
+                foreach ($searchTerms as $term) {
+                    $q->where(function ($subQuery) use ($term) {
+                        $subQuery->where('merchant_name', 'LIKE', "%$term%")
+                            ->orWhere('name', 'LIKE', "%$term%")
+                            ->orWhere('cruiseline_category', 'LIKE', "%$term%")
+                            ->orWhere('cruiseline_name', 'LIKE', "%$term%")
+                            ->orWhere('cruiseship_name', 'LIKE', "%$term%")
+                            ->orWhere('destination_continent_name', 'LIKE', "%$term%")
+                            ->orWhere('destination_country_name', 'LIKE', "%$term%")
+                            ->orWhere('destination_region_name', 'LIKE', "%$term%")
+                            ->orWhere('destination_province_name', 'LIKE', "%$term%")
+                            ->orWhere('destination_city_name', 'LIKE', "%$term%");
+                    });
+                }
+            });
+        }
+
         // Default sorting
         $sortBy = $request->get('sort', 'price_asc');
 
@@ -32,9 +55,6 @@ class SearchController extends Controller
             'name_desc' => ['name', 'desc'],
             default => ['price', 'asc'],
         };
-
-        // Start building the query
-        $query = DB::table('affiliate_products_loaded_searchpage');
 
         // Apply filters
         if ($request->has('continent')) {
@@ -205,6 +225,7 @@ class SearchController extends Controller
             'sortBy' => $sortBy,
             'facets' => $facets,
             'totalResults' => $products->total(),
+            'searchTerm' => $request->get('search', ''),
         ]);
     }
 }

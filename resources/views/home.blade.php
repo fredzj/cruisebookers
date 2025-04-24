@@ -9,6 +9,14 @@
     <img src="{{ asset('images/hero.jpg') }}" class="img-fluid w-100" alt="Cruise Hero Image">
     <div class="hero-text text-center">
         <h1 class="display-4 text-white">Welke cruise past bij jou?</h1>
+        <div class="container my-5">
+            <form action="{{ route('search') }}" method="GET">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Zoek naar cruises, bestemmingen of maatschappijen..." aria-label="Search" aria-describedby="search-button">
+                    <button class="btn btn-primary" type="submit" id="search-button">Zoeken</button>
+                </div>
+            </form>
+        </div>
         <p class="lead text-white">Ontdek de mooiste cruises over zee en rivier.</p>
     </div>
 </div>

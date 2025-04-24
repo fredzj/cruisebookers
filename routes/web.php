@@ -6,6 +6,7 @@ use App\Http\Controllers\AffiliateNetworkMerchantController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VendorRijksoverheidTraveladviceController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -39,3 +40,5 @@ Route::get('/sitemap', function () {
     $traveladvices = app(VendorRijksoverheidTraveladviceController::class)->all();
     return view('sitemap', compact('merchants', 'cruiselines', 'traveladvices'));
 })->name('sitemap');
+
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');

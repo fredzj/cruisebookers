@@ -84,7 +84,7 @@
                 <div class="col-md-2"></div>
             </div>
         </div>
-        <div class="bg-secondary text-center py-2 mt-3">
+        <div class="bg-transparent text-center py-2 mt-3">
             <p class="mb-0">&copy; {{ date('Y') }} Cruisebookers. All rights reserved.</p>
         </div>
     </footer>

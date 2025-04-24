@@ -20,6 +20,7 @@
         </div>
         <div class="col-md-8">
             <h1>{{ $cruiseline->name }}</h1>
+            <h2>{{ $cruiseline->slogan }}</h2>
             <p class="lead">{{ $cruiseline->lead_paragraph }}</p>
             {!! $cruiseline->introduction !!}
             {!! $cruiseline->description !!}
