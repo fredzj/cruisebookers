@@ -14,11 +14,39 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: FTP Deploy
+      - name: FTP Deploy (Application Files)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/  # Modify this if your hosting uses a different directory
-          local-dir: ./  # Adjust if you want to deploy a specific subdirectory
+          server-dir: /laravel/  # Directory outside public_html
+          local-dir: ./  # Deploy the entire Laravel project
+          exclude: |
+            public/
+            .git*
+            node_modules/
+            storage/
+            vendor/
+            tests/
+            *.log
+            *.env
+            phpunit.xml
+            README.md
+            package.json
+            package-lock.json
+            composer.json
+            composer.lock
+
+      - name: FTP Deploy (Public Folder)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/  # Public directory
+          local-dir: ./public/  # Deploy only the public folder
+          exclude: |
+            .git*
+            *.env
+            *.log
