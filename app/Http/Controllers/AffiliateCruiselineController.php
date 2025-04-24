@@ -54,7 +54,7 @@ class AffiliateCruiselineController extends Controller
         $cruiseline = AffiliateCruiseline::where('slug', $slug)->firstOrFail();
 
         // Load related cruiseships for the cruiseline
-        $cruiseline->load('cruiseships');
+        //$cruiseline->load('cruiseships');
 
         return view('cruiseline-detail', compact('cruiseline'));
     }
