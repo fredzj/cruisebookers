@@ -312,9 +312,13 @@
                                             <i class="fa-sharp fa-solid fa-clock"></i> lastminute
                                         @endif
                                         @if(isset($product->price) && $product->price > 0)
+                                            @php
+                                                $formatter = new \NumberFormatter('nl_NL', \NumberFormatter::CURRENCY);
+                                                $formatter->setAttribute(\NumberFormatter::FRACTION_DIGITS, 0); // Remove decimals
+                                            @endphp
                                             <br>
                                             <span class="badge bg-success">
-                                                <i class="fa-solid fa-tag"></i> €{{ number_format($product->price, 2) }}
+                                                <i class="fa-solid fa-tag"></i> v.a. {{ $formatter->formatCurrency($product->price, 'EUR') }} p.p.
                                             </span>
                                         @endif
                                     </p>

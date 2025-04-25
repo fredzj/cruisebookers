@@ -46,7 +46,11 @@
                 <p><strong>Cruiseschip:</strong> {{ $product->cruiseship_name }}</p>
             @endif
             @if(isset($product->price) && $product->price > 0)
-                <p><strong>Prijs:</strong> €{{ number_format($product->price, 2) }}</p>
+               @php
+                    $formatter = new \NumberFormatter('nl_NL', \NumberFormatter::CURRENCY);
+                    $formatter->setAttribute(\NumberFormatter::FRACTION_DIGITS, 0); // Remove decimals
+                @endphp
+                <p><strong>Prijs:</strong> v.a. {{ $formatter->formatCurrency($product->price, 'EUR') }} p.p.</p>
             @endif
             @if(isset($product->additional_data->offer_includedinprice))
                 <p><strong>Inbegrepen in de prijs:</strong> {{ $product->additional_data->offer_includedinprice }}</p>
