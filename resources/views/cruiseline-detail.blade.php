@@ -20,6 +20,10 @@
             @if(isset($cruiseline->lists))
                 {!! $cruiseline->lists !!}
             @endif
+            <!-- CTA Button -->
+            <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="btn btn-primary mt-4">
+                Bekijk cruises van {{ $cruiseline->name }}
+            </a>
         </div>
         <div class="col-md-8">
             <h1>{{ $cruiseline->name }}</h1>
