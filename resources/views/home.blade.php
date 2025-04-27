@@ -199,4 +199,16 @@
         </div>
     </div>
 </div>
+<!--
+<div class="container my-4">
+    !-- Random Banner Section --
+    @if(isset($randomBanner))
+        <div class="random-banner text-center mb-4">
+            <a href="{{ route('search', ['merchant' => [$randomBanner->merchant_slug]]) }}">
+                {!! $randomBanner->banner !!}
+            </a>
+        </div>
+    @endif
+</div>
+-->
 @endsection
