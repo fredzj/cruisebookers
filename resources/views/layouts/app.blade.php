@@ -12,6 +12,7 @@
 	<meta name="twitter:image:alt"				content="CruiseBookers">
 	<meta name="twitter:site"					content="CruiseBookers.nl" />
 	<meta name="twitter:title"					content="CruiseBookers">
+    <meta name="verification"                   content="d17273cf421505896976a37bd3651dd7" /> <!-- AWIN -->
 	<meta property="og:description"				content="CruiseBookers · Voordelige cruise vakanties in 2025/2026" />
 	<meta property="og:image"					content="https://cruisebookers.nl/images/hero.jpg" />
 	<meta property="og:image:alt"				content="See Nederland" />
