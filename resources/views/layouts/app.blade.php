@@ -12,8 +12,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark xbg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('images/icon-192.png') }}" alt="Logo" style="height: 40px;">
-                Cruisebookers
+                <img src="{{ asset('images/logo-cruisebookers.jpg') }}" alt="Logo" style="height: 40px;">
+                CruiseBookers
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -38,8 +38,8 @@
             <div class="row">
                 <!-- Column 1 -->
                 <div class="col-md-2">
-                    <h5>Cruisebookers</h5>
-                    <img src="{{ asset('images/icon-192.png') }}" alt="Cruisebookers Logo" class="img-fluid mb-2">
+                    <h5>CruiseBookers</h5>
+                    <img src="{{ asset('images/logo-cruisebookers.jpg') }}" alt="Cruisebookers Logo" class="img-fluid mb-2">
                     <ul class="list-unstyled">
                         <li><a href="{{ route('privacyverklaring') }}" class="text-white">Privacyverklaring</a></li>
                         <li><a href="{{ route('cookieverklaring') }}" class="text-white">Cookieverklaring</a></li>
@@ -85,7 +85,7 @@
             </div>
         </div>
         <div class="bg-transparent text-center py-2 mt-3">
-            <p class="mb-0">&copy; {{ date('Y') }} Cruisebookers. All rights reserved.</p>
+            <p class="mb-0">&copy; {{ date('Y') }} CruiseBookers. All rights reserved.</p>
         </div>
     </footer>
 

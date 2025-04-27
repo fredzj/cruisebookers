@@ -16,7 +16,9 @@
     <!-- Cruiseline Details -->
     <div class="row">
         <div class="col-md-4">
-            <img src="{{ $cruiseline->url_logo }}" class="img-fluid rounded" alt="{{ $cruiseline->name }}">
+            @if(isset($cruiseline->url_logo))
+                <img src="{{ $cruiseline->url_logo }}" class="img-fluid rounded mb-3" alt="{{ $cruiseline->name }}">
+            @endif
             @if(isset($cruiseline->lists))
                 {!! $cruiseline->lists !!}
             @endif

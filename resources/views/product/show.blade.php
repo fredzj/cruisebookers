@@ -32,15 +32,31 @@
         </div>
         <div class="col-md-6">
             <h1>{{ $product->name }}</h1>
-            <p><strong>Bestemming:</strong> {{ $product->destination_country_name }}</p>
+            @if(isset($product->additional_data->departure_country))
+                <p><strong>Vertrek:</strong> {{ $product->additional_data->departure_country }}</p>
+            @endif
+            <p><strong>Bestemming:</strong>
+                @if(isset($product->destination_country_name))
+                    {{ $product->destination_country_name }}
+                @endif
+                @if(isset($product->destination_region_name))
+                    / {{ $product->destination_region_name }}
+                @endif
+                @if(isset($product->destination_province_name))
+                    / {{ $product->destination_province_name }}
+                @endif
+                @if(isset($product->destination_city_name))
+                    / {{ $product->destination_city_name }}
+                @endif
+            </p>
             @if(isset($product->offer_departure_date))
-                <p><strong>Vertrekdatum:</strong> {{ $product->offer_departure_date }}</p>
+                <p><strong>Vertrekdatum:</strong> {{ \Carbon\Carbon::parse($product->offer_departure_date)->translatedFormat('l j F Y') }}</p>
             @endif
             @if(isset($product->offer_duration_days))
                 <p><strong>Duur:</strong> {{ $product->offer_duration_days }} dagen</p>
             @endif
             @if(isset($product->cruiseline_name))
-                <p><strong>Cruisemaatschappij:</strong> {{ $product->cruiseline_name }}</p>
+                <p><strong>Cruisemaatschappij:</strong> <a href="/cruisemaatschappijen/{{ \Illuminate\Support\Str::slug($product->cruiseline_name) }}">{{ $product->cruiseline_name }}</a></p>
             @endif
             @if(isset($product->cruiseship_name))
                 <p><strong>Cruiseschip:</strong> {{ $product->cruiseship_name }}</p>
@@ -70,7 +86,7 @@
             @if(isset($product->additional_data->accommodation_descriptionlong))
                 <p><strong>Uitgebreide Beschrijving:</strong> {{ $product->additional_data->accommodation_descriptionlong }}</p>
             @endif
-            @if(isset($product->additional_data->accommodation_facilities))
+            @if(isset($product->additional_data->accommodation_facilities) && $product->additional_data->accommodation_facilities <> '')
                 <p><strong>Faciliteiten:</strong> {{ $product->additional_data->accommodation_facilities }}</p>
             @endif
             @if(isset($product->additional_data->accommodation_usps))

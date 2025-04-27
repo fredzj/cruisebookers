@@ -282,7 +282,7 @@
                                     <p class="card-text">
                                         <br><i class="fa-solid fa-globe"></i> {{ $product->destination_country_name }}
                                         @if(isset($product->offer_departure_date))
-                                            <br><i class="fa-solid fa-calendar"></i> {{ $product->offer_departure_date }}
+                                            <br><i class="fa-solid fa-calendar"></i> {{ \Carbon\Carbon::parse($product->offer_departure_date)->translatedFormat('D j M Y') }}
                                         @endif
                                         @if(isset($product->offer_duration_days) && $product->offer_duration_days > 0)
                                             <br><i class="fa-solid fa-calendar-days"></i> {{ $product->offer_duration_days }} dagen
