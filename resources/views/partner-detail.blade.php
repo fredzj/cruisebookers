@@ -16,7 +16,19 @@
     <!-- Partner Details -->
     <div class="row">
         <div class="col-md-4">
-            <img src="{{ $merchant->url_merchant_logo }}" class="img-fluid rounded" alt="{{ $merchant->name }}">
+            <img src="{{ $merchant->url_merchant_logo }}" class="img-fluid rounded mb-3" alt="{{ $merchant->name }}">
+            <!-- Trust Icons -->
+            <div class="trust-icons mt-3 d-flex justify-content-start">
+                @if(isset($merchant->is_member_anvr) && $merchant->is_member_anvr == 1)
+                    <img src="{{ asset('images/logo-anvr.svg') }}" alt="ANVR Logo" class="me-2" style="width: 40px; height: auto;">
+                @endif
+                @if(isset($merchant->is_member_cf) && $merchant->is_member_cf == 1)
+                    <img src="{{ asset('images/logo-calamiteitenfonds.svg') }}" alt="Calamiteitenfonds Logo" class="me-2" style="width: 40px; height: auto;">
+                @endif
+                @if(isset($merchant->is_member_sgr) && $merchant->is_member_sgr == 1)
+                    <img src="{{ asset('images/logo-sgr.svg') }}" alt="SGR Logo" class="me-2" style="width: 40px; height: auto;">
+                @endif
+            </div>
         </div>
         <div class="col-md-8">
             <h1>{{ $merchant->name }}</h1>

@@ -240,10 +240,22 @@
                             </span>
                         @endforeach
                     @endif
-                        
+
+                    <!-- Merchant Badges -->
+                    @if(request()->has('merchant'))
+                        @foreach(request('merchant') as $merchant)
+                            <span class="badge bg-dark me-2">
+                                {{ $merchant }}
+                                <a href="{{ route('search', array_merge(request()->except('merchant', 'page'), ['merchant' => array_diff(request('merchant'), [$merchant])])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif    
+
                     <!-- Clear All Filters -->
-                    @if(request()->hasAny(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship']))
-                        <a href="{{ route('search', request()->except(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship', 'page'])) }}" class="btn btn-link text-danger">
+                    @if(request()->hasAny(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant']))
+                        <a href="{{ route('search', request()->except(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant', 'page'])) }}" class="btn btn-link text-danger">
                             Verwijder alle filters
                         </a>
                     @endif
