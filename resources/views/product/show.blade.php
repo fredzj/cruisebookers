@@ -69,7 +69,16 @@
                 <p><strong>Prijs:</strong> v.a. {{ $formatter->formatCurrency($product->price, 'EUR') }} p.p.</p>
             @endif
             @if(isset($product->additional_data->offer_includedinprice))
-                <p><strong>Inbegrepen in de prijs:</strong> {{ $product->additional_data->offer_includedinprice }}</p>
+                <p><strong>Inbegrepen in de prijs:</strong></p>
+                @if(str_contains($product->additional_data->offer_includedinprice, '|'))
+                    <ul>
+                        @foreach(explode('|', $product->additional_data->offer_includedinprice) as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>{{ $product->additional_data->offer_includedinprice }}</p>
+                @endif
             @endif
             @if(isset($product->additional_data->offer_excludedfromprice))
                 <p><strong>Niet inbegrepen in de prijs:</strong> {{ $product->additional_data->offer_excludedfromprice }}</p>
@@ -80,7 +89,7 @@
             @if(isset($product->additional_data->accommodation_descriptionshort))
                 <p><strong>Korte Beschrijving:</strong> {{ $product->additional_data->accommodation_descriptionshort }}</p>
             @endif
-            @if(isset($product->additional_data->description))
+            @if(isset($product->additional_data->description) && $product->additional_data->description <> '')
                 <p><strong>Beschrijving:</strong> {{ $product->additional_data->description }}</p>
             @endif
             @if(isset($product->additional_data->accommodation_descriptionlong))
