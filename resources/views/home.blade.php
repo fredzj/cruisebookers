@@ -6,7 +6,7 @@
 @section('content')
 <!-- Hero Section -->
 <div class="hero mb-5">
-    <img src="{{ asset('images/hero.jpg') }}" class="img-fluid w-100" alt="Cruise Hero Image">
+    <img src="{{ asset('images/hero.jpg') }}" class="img-fluid w-100" alt="CruiseBookers">
     <div class="hero-text text-center">
         <h1 class="display-4 text-white">Welke cruise past bij jou?</h1>
         <div class="container my-5">
