@@ -43,6 +43,6 @@ class AffiliateCruiseline extends Model
      */
     public function cruiseships()
     {
-        return $this->hasMany(affiliateCruiseship::class, 'cruiseline_id');
+        return $this->hasMany(AffiliateCruiseship::class, 'cruiseline_id');
     }
 }
