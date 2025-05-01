@@ -1,327 +1,327 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
-    <loc>http://localhost</loc>
+    <loc>https://cruisebookers.nl</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
             </url>
     <url>
-    <loc>http://localhost/partners</loc>
+    <loc>https://cruisebookers.nl/partners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
             </url>
     <url>
-    <loc>http://localhost/reisadviezen</loc>
+    <loc>https://cruisebookers.nl/reisadviezen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/norwegian-cruise-line</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/norwegian-cruise-line</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/aida-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/aida-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/princess-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/princess-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/royal-caribbean</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/royal-caribbean</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/costa-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/costa-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/msc-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/msc-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/oceania-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/oceania-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/star-clippers</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/star-clippers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/silversea-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/silversea-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/holland-america-line</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/holland-america-line</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/cunard-line</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/cunard-line</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/azamara</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/azamara</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/seabourn</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/seabourn</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/carnival-cruise-lines</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/carnival-cruise-lines</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/tui-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/tui-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/hapag-lloyd-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/hapag-lloyd-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/nicko-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/nicko-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/disney-cruise-line</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/disney-cruise-line</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/regent-seven-seas-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/regent-seven-seas-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/celebrity-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/celebrity-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/ponant</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/ponant</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/dcs-touristik</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/dcs-touristik</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/amawaterways</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/amawaterways</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/uniworld-river-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/uniworld-river-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/seadream-yacht-club</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/seadream-yacht-club</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/viva-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/viva-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/feenstra-rijn-lijn</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/feenstra-rijn-lijn</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/hurtigruten</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/hurtigruten</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/dutch-cruise-line</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/dutch-cruise-line</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/majestic-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/majestic-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/trans-river-line</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/trans-river-line</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/celestyal-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/celestyal-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/arctic-procruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/arctic-procruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/explora-journeys</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/explora-journeys</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/p-o-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/p-o-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/virgin-voyages</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/virgin-voyages</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/crucemundo</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/crucemundo</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/marella-cruises</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/marella-cruises</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/cruisemaatschappijen/oceanwide-expeditions</loc>
+    <loc>https://cruisebookers.nl/cruisemaatschappijen/oceanwide-expeditions</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/tui</loc>
+    <loc>https://cruisebookers.nl/partners/tui</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/dejongintra</loc>
+    <loc>https://cruisebookers.nl/partners/dejongintra</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/bbi</loc>
+    <loc>https://cruisebookers.nl/partners/bbi</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/amorgos</loc>
+    <loc>https://cruisebookers.nl/partners/amorgos</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/oad</loc>
+    <loc>https://cruisebookers.nl/partners/oad</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/cruisereizen</loc>
+    <loc>https://cruisebookers.nl/partners/cruisereizen</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/merapi</loc>
+    <loc>https://cruisebookers.nl/partners/merapi</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/fital</loc>
+    <loc>https://cruisebookers.nl/partners/fital</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/cruiseonline</loc>
+    <loc>https://cruisebookers.nl/partners/cruiseonline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/sundowner</loc>
+    <loc>https://cruisebookers.nl/partners/sundowner</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/captaincruise</loc>
+    <loc>https://cruisebookers.nl/partners/captaincruise</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/oadnl</loc>
+    <loc>https://cruisebookers.nl/partners/oadnl</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/hollandsail</loc>
+    <loc>https://cruisebookers.nl/partners/hollandsail</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/lastminutecom</loc>
+    <loc>https://cruisebookers.nl/partners/lastminutecom</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/traveldeal</loc>
+    <loc>https://cruisebookers.nl/partners/traveldeal</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/cruiseoutlet</loc>
+    <loc>https://cruisebookers.nl/partners/cruiseoutlet</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/sunweb</loc>
+    <loc>https://cruisebookers.nl/partners/sunweb</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/corendon</loc>
+    <loc>https://cruisebookers.nl/partners/corendon</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/stipreizen</loc>
+    <loc>https://cruisebookers.nl/partners/stipreizen</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/oceanwide</loc>
+    <loc>https://cruisebookers.nl/partners/oceanwide</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/directferries</loc>
+    <loc>https://cruisebookers.nl/partners/directferries</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/partners/0</loc>
+    <loc>https://cruisebookers.nl/partners/0</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
             </url>

@@ -32,6 +32,7 @@
         })(window,document,'script','dataLayer','GTM-T3BFKVP2');</script>
     <!-- End Google Tag Manager -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical"                       href="@yield('canonical', url()->current())">
     <link rel="stylesheet"                      href="{{ asset('css/custom.css') }}">
 	<link rel="icon"							href="https://cruisebookers.nl/favicon.ico">
     <script src="https://kit.fontawesome.com/89cc921f34.js" crossorigin="anonymous"></script>
