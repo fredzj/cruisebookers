@@ -21,7 +21,8 @@ class AffiliateNetworkMerchantController extends Controller
      */
     public function index()
     {
-        $merchants = AffiliateNetworkMerchant::select('name', 'slug', 'url_merchant_logo')
+        $merchants = AffiliateNetworkMerchant::nonBlocked()
+            ->select('name', 'slug', 'url_merchant_logo')
             ->where('is_blocked', 0) // Select only merchants that are not blocked
             ->orderBy('name', 'asc') // Sort by name in ascending order
             ->get();
@@ -36,7 +37,8 @@ class AffiliateNetworkMerchantController extends Controller
      */
     public function all()
     {
-        return AffiliateNetworkMerchant::select('slug', 'name')
+        return AffiliateNetworkMerchant::nonBlocked()
+            ->select('slug', 'name')
             ->where('is_blocked', 0) // Select only merchants that are not blocked
             ->orderBy('name', 'asc') // Sort by name in ascending order
             ->get();

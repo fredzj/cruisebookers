@@ -35,12 +35,12 @@ class GenerateSitemap extends Command
             ->add(Url::create('/reisadviezen')->setPriority(0.8)->setChangeFrequency('monthly'));
 
         // Add dynamic URLs (e.g., products, categories)
-        foreach (\App\Models\AffiliateCruiseline::all() as $cruiseline) {
+        foreach (\App\Models\AffiliateCruiseline::query()->nonBlocked()->get() as $cruiseline) {
             $sitemap->add(Url::create("/cruisemaatschappijen/{$cruiseline->slug}")
                 ->setPriority(0.7)
                 ->setChangeFrequency('weekly'));
         }
-        foreach (\App\Models\AffiliateNetworkMerchant::all() as $merchant) {
+        foreach (\App\Models\AffiliateNetworkMerchant::query()->nonBlocked()->get() as $merchant) {
             $sitemap->add(Url::create("/partners/{$merchant->slug}")
                 ->setPriority(0.7)
                 ->setChangeFrequency('weekly'));
