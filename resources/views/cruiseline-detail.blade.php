@@ -38,6 +38,29 @@
             <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="btn btn-primary mt-4">
                 Bekijk cruises van {{ $cruiseline->name }}
             </a>
+
+            <div class="row mt-5">
+                <h3 class="mb-4">Onze Schepen</h3>
+                @if(isset($cruiseline->cruiseships) && $cruiseline->cruiseships->count() > 0)
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        @foreach($cruiseline->cruiseships->sortBy('name') as $ship)
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="{{ file_exists(public_path('images/cruiseships/' . $cruiseline->slug . '-' . $ship->slug . '.jpg')) 
+                                        ? asset('images/cruiseships/' . $cruiseline->slug . '-' . $ship->slug . '.jpg') 
+                                        : asset('images/cruiseships/placeholder.jpg') }}" 
+                                        class="card-img-top" alt="{{ $ship->name }}">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">{{ $ship->name }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <p>Er zijn geen schepen beschikbaar voor deze cruisemaatschappij.</p>
+                @endif
+            </div>
         </div>
     </div>
 </div>
