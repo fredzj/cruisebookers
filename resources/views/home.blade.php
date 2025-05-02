@@ -1,7 +1,8 @@
 <!-- filepath: d:\Work\Clients\FredOnis\cruisebookers\resources\views\home.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'CruiseBookers - De mooiste cruises over zee en rivier')
+@section('meta_description', 'Ontdek de mooiste cruises over zee en rivier. Vergelijk en boek jouw droomcruise met CruiseBookers.')
 
 @section('content')
 <!-- Hero Section -->
