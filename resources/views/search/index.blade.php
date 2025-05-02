@@ -20,159 +20,202 @@
             <h5>Filters</h5>
             <form method="GET" action="{{ route('search') }}" id="filter-form">
 
-                <!-- Cruisetype Facet -->
-                <div class="mb-3">
-                    <h6>Cruisetype</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="zeecruise" id="seacruise" {{ in_array('zeecruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="seacruise">
-                            Zeecruise
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="riviercruise" id="rivercruise" {{ in_array('riviercruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="rivercruise">
-                            Riviercruise
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="minicruise" id="minicruise" {{ in_array('minicruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="minicruise">
-                            Minicruise
-                        </label>
-                    </div>
-                </div>
+                <div class="accordion" id="filterAccordion">
 
-                <!-- Departure Year and Month Filter -->
-                <div class="mb-3">
-                    <h6>Vertrekdatum</h6>
-                    <div class="accordion" id="departureAccordion">
-                        @foreach($facets['monthsByYear'] as $year => $months)
-                            <div class="mb-2">
-                                <!-- Year Checkbox -->
+                    <!-- Cruisetype Facet -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingCruisetype">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCruisetype" aria-expanded="true" aria-controls="collapseCruisetype">
+                                Cruisetype
+                            </button>
+                        </h2>
+                        <div id="collapseCruisetype" class="accordion-collapse collapse show" aria-labelledby="headingCruisetype" xdata-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
                                 <div class="form-check">
-                                    <input class="form-check-input departure-year-checkbox" type="checkbox" name="departure_year[]" value="{{ $year }}" id="departure-year-{{ $year }}" {{ in_array($year, request('departure_year', [])) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="departure-year-{{ $year }}">
-                                        {{ $year }}
-                                    </label>
+                                    <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="zeecruise" id="seacruise" {{ in_array('zeecruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="seacruise">Zeecruise</label>
                                 </div>
-                            
-                                <!-- Month Checkboxes -->
-                                <div class="ms-3 months-container" data-year="{{ $year }}" style="display: {{ in_array($year, request('departure_year', [])) ? 'block' : 'none' }};">
-                                    @foreach($months as $month)
-                                        <div class="form-check">
-                                            <input class="form-check-input departure-month-checkbox" type="checkbox" name="departure_month[]" value="{{ $month->month }}" id="departure-month-{{ $year }}-{{ $month->month }}" {{ in_array($month->month, request('departure_month', [])) ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="departure-month-{{ $year }}-{{ $month->month }}">
-                                                {{ DateTime::createFromFormat('!m', $month->month)->format('F') }}
-                                            </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="riviercruise" id="rivercruise" {{ in_array('riviercruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="rivercruise">Riviercruise</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="cruiseline_category[]" value="minicruise" id="minicruise" {{ in_array('minicruise', request('cruiseline_category', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="minicruise">Minicruise</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Departure Year and Month Filter -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingDepartureDate">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDepartureDate" aria-expanded="true" aria-controls="collapseDepartureDate">
+                                Vertrekdatum
+                            </button>
+                        </h2>
+                        <div id="collapseDepartureDate" class="accordion-collapse collapse show" aria-labelledby="headingDepartureDate" xdata-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                <div class="accordion" id="departureAccordion">
+                                    @foreach($facets['monthsByYear'] as $year => $months)
+                                        <div class="mb-2">
+                                            <!-- Year Checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input departure-year-checkbox" type="checkbox" name="departure_year[]" value="{{ $year }}" id="departure-year-{{ $year }}" {{ in_array($year, request('departure_year', [])) ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="departure-year-{{ $year }}">
+                                                    {{ $year }}
+                                                </label>
+                                            </div>
+                                        
+                                            <!-- Month Checkboxes -->
+                                            <div class="ms-3 months-container" data-year="{{ $year }}" style="display: {{ in_array($year, request('departure_year', [])) ? 'block' : 'none' }};">
+                                                @foreach($months as $month)
+                                                    <div class="form-check">
+                                                        <input class="form-check-input departure-month-checkbox" type="checkbox" name="departure_month[]" value="{{ $month->month }}" id="departure-month-{{ $year }}-{{ $month->month }}" {{ in_array($month->month, request('departure_month', [])) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="departure-month-{{ $year }}-{{ $month->month }}">
+                                                            {{ DateTime::createFromFormat('!m', $month->month)->format('F') }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
-                </div>
 
-                <!-- Duration filter -->
-                <div class="mb-3">
-                    <h6>Duur</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="duration[]" value="1-3" id="duration-1-3" {{ in_array('1-3', request('duration', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="duration-1-3">
-                            1-3 dagen
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="duration[]" value="4-7" id="duration-4-7" {{ in_array('4-7', request('duration', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="duration-4-7">
-                            4-7 dagen
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="duration[]" value="8-14" id="duration-8-14" {{ in_array('8-14', request('duration', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="duration-8-14">
-                            8-14 dagen
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="duration[]" value="15+" id="duration-15+" {{ in_array('15+', request('duration', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="duration-15+">
-                            15+ dagen
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Continent and Country Facets -->
-                <div class="mb-3">
-                    <h6>Bestemming</h6>
-                    <div class="accordion" id="continentAccordion">
-                        @foreach($facets['countriesByContinent'] as $continent => $countries)
-                        <div class="mb-2">
-                            <!-- Continent Checkbox -->
-                            <div class="form-check">
-                                <input class="form-check-input continent-checkbox" type="checkbox" name="continent[]" value="{{ $continent }}" id="continent-{{ $continent }}" {{ in_array($continent, request('continent', [])) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="continent-{{ $continent }}">
-                                    {{ $continent }}
-                                </label>
+                    <!-- Duration filter -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingDuration">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDuration" aria-expanded="true" aria-controls="collapseDuration">
+                                Reisduur
+                            </button>
+                        </h2>
+                        <div id="collapseDuration" class="accordion-collapse collapse show" aria-labelledby="headingDuration" xdata-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="duration[]" value="1-3" id="duration-1-3" {{ in_array('1-3', request('duration', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="duration-1-3">
+                                        1-3 dagen
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="duration[]" value="4-7" id="duration-4-7" {{ in_array('4-7', request('duration', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="duration-4-7">
+                                        4-7 dagen
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="duration[]" value="8-14" id="duration-8-14" {{ in_array('8-14', request('duration', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="duration-8-14">
+                                        8-14 dagen
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="duration[]" value="15+" id="duration-15+" {{ in_array('15+', request('duration', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="duration-15+">
+                                        15+ dagen
+                                    </label>
+                                </div>
                             </div>
-            
-                            <!-- Country Checkboxes -->
-                            <div class="ms-3 countries-container" data-continent="{{ $continent }}" style="display: {{ in_array($continent, request('continent', [])) || collect($countries)->pluck('destination_country_name')->intersect(request('country', []))->isNotEmpty() ? 'block' : 'none' }};">
-                                @foreach($countries as $country)
-                                    <div class="form-check">
-                                        <input class="form-check-input country-checkbox" type="checkbox" name="country[]" value="{{ $country->destination_country_name }}" id="country-{{ $country->destination_country_name }}" {{ in_array($country->destination_country_name, request('country', [])) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="country-{{ $country->destination_country_name }}">
-                                            {{ $country->destination_country_name }}
-                                        </label>
+                        </div>
+                    </div>
+
+                    <!-- Continent and Country Facets -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingDestination">
+                            <button class="accordion-button {{ request()->has('continent') ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDestination" aria-expanded="false" aria-controls="collapseDestination">
+                                Bestemming
+                            </button>
+                        </h2>
+                        <div id="collapseDestination" class="accordion-collapse collapse {{ request()->has('continent') ? 'show' : '' }}" aria-labelledby="headingDestination" xdata-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                <div class="accordion" id="continentAccordion">
+                                    @foreach($facets['countriesByContinent'] as $continent => $countries)
+                                    <div class="mb-2">
+                                        <!-- Continent Checkbox -->
+                                        <div class="form-check">
+                                            <input class="form-check-input continent-checkbox" type="checkbox" name="continent[]" value="{{ $continent }}" id="continent-{{ $continent }}" {{ in_array($continent, request('continent', [])) ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="continent-{{ $continent }}">
+                                                {{ $continent }}
+                                            </label>
+                                        </div>
+                                    
+                                        <!-- Country Checkboxes -->
+                                        <div class="ms-3 countries-container" data-continent="{{ $continent }}" style="display: {{ in_array($continent, request('continent', [])) || collect($countries)->pluck('destination_country_name')->intersect(request('country', []))->isNotEmpty() ? 'block' : 'none' }};">
+                                            @foreach($countries as $country)
+                                                <div class="form-check">
+                                                    <input class="form-check-input country-checkbox" type="checkbox" name="country[]" value="{{ $country->destination_country_name }}" id="country-{{ $country->destination_country_name }}" {{ in_array($country->destination_country_name, request('country', [])) ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="country-{{ $country->destination_country_name }}">
+                                                        {{ $country->destination_country_name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Cruiseline Facet -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingCruiseline">
+                            <button class="accordion-button {{ request()->has('cruiseline') ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCruiseline" aria-expanded="false" aria-controls="collapseCruiseline">
+                                Cruisemaatschappij
+                            </button>
+                        </h2>
+                        <div id="collapseCruiseline" class="accordion-collapse collapse {{ request()->has('cruiseline') ? 'show' : '' }}" aria-labelledby="headingCruiseline" xdata-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                @foreach($facets['cruiseshipsByCruiseline'] as $cruiseline => $cruiseships)
+                                    <div class="mb-2">
+                                        <!-- Cruiseline Checkbox -->
+                                        <div class="form-check">
+                                            <input class="form-check-input cruiseline-checkbox" type="checkbox" name="cruiseline[]" value="{{ $cruiseline }}" id="cruiseline-{{ $cruiseline }}" {{ in_array($cruiseline, request('cruiseline', [])) ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="cruiseline-{{ $cruiseline }}">
+                                                {{ $cruiseline }}
+                                            </label>
+                                        </div>
+                                    
+                                        <!-- Cruiseship Checkboxes -->
+                                        @if($cruiseships->isNotEmpty())
+                                            <div class="ms-3 cruiseships-container" data-cruiseline="{{ $cruiseline }}" style="display: {{ in_array($cruiseline, request('cruiseline', [])) || collect($cruiseships)->pluck('cruiseship_name')->intersect(request('cruiseship', []))->isNotEmpty() ? 'block' : 'none' }};">
+                                                @foreach($cruiseships as $cruiseship)
+                                                    <div class="form-check">
+                                                        <input class="form-check-input cruiseship-checkbox" type="checkbox" name="cruiseship[]" value="{{ $cruiseship->cruiseship_name }}" id="cruiseship-{{ $cruiseship->cruiseship_name }}" {{ in_array($cruiseship->cruiseship_name, request('cruiseship', [])) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="cruiseship-{{ $cruiseship->cruiseship_name }}">
+                                                            {{ $cruiseship->cruiseship_name }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>
                         </div>
-                        @endforeach
                     </div>
-                </div>
-                
-                <!-- Cruiseline Facet -->
-                <div class="mb-3">
-                    <h6>Cruisemaatschappij</h6>
-                    @foreach($facets['cruiseshipsByCruiseline'] as $cruiseline => $cruiseships)
-                        <div class="mb-2">
-                            <!-- Cruiseline Checkbox -->
-                            <div class="form-check">
-                                <input class="form-check-input cruiseline-checkbox" type="checkbox" name="cruiseline[]" value="{{ $cruiseline }}" id="cruiseline-{{ $cruiseline }}" {{ in_array($cruiseline, request('cruiseline', [])) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="cruiseline-{{ $cruiseline }}">
-                                    {{ $cruiseline }}
-                                </label>
-                            </div>
-                        
-                            <!-- Cruiseship Checkboxes -->
-                            @if($cruiseships->isNotEmpty())
-                                <div class="ms-3 cruiseships-container" data-cruiseline="{{ $cruiseline }}" style="display: {{ in_array($cruiseline, request('cruiseline', [])) || collect($cruiseships)->pluck('cruiseship_name')->intersect(request('cruiseship', []))->isNotEmpty() ? 'block' : 'none' }};">
-                                    @foreach($cruiseships as $cruiseship)
-                                        <div class="form-check">
-                                            <input class="form-check-input cruiseship-checkbox" type="checkbox" name="cruiseship[]" value="{{ $cruiseship->cruiseship_name }}" id="cruiseship-{{ $cruiseship->cruiseship_name }}" {{ in_array($cruiseship->cruiseship_name, request('cruiseship', [])) ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="cruiseship-{{ $cruiseship->cruiseship_name }}">
-                                                {{ $cruiseship->cruiseship_name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                        </div>
-                    @endforeach
-                </div>
 
-                <!-- Merchant Facet -->
-                <div class="mb-3">
-                    <h6>Reisorganisatie</h6>
-                    @foreach($facets['merchants'] as $merchant)
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="merchant[]" value="{{ $merchant }}" id="merchant-{{ $merchant }}" {{ in_array($merchant, request('merchant', [])) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="merchant-{{ $merchant }}">
-                                {{ $merchant }}
-                            </label>
+                    <!-- Merchant Facet -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingMerchant">
+                            <button class="accordion-button {{ request()->has('merchant') ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMerchant" aria-expanded="false" aria-controls="collapseMerchant">
+                                Reisorganisatie
+                            </button>
+                        </h2>
+                        <div id="collapseMerchant" class="accordion-collapse collapse {{ request()->has('merchant') ? 'show' : '' }}" aria-labelledby="headingMerchant" xdata-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                @foreach($facets['merchants'] as $merchant)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="merchant[]" value="{{ $merchant }}" id="merchant-{{ $merchant }}" {{ in_array($merchant, request('merchant', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="merchant-{{ $merchant }}">{{ $merchant }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary d-none">Apply Filters</button>

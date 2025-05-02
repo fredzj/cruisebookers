@@ -188,6 +188,8 @@ class SearchController extends Controller
         $facets['cruiseshipsByCruiseline'] = DB::table('affiliate_products_loaded_searchpage')
             ->select('cruiseline_name', 'cruiseship_name')
             ->whereNotNull('cruiseline_name')
+            ->whereNotNull('cruiseship_name') // Ensure cruiseship_name is not null
+            ->where('cruiseship_name', '!=', '') // Ensure cruiseship_name is not empty
             ->distinct()
             ->orderBy('cruiseline_name', 'asc')
             ->orderBy('cruiseship_name', 'asc')
@@ -197,6 +199,7 @@ class SearchController extends Controller
         $facets['departureYears'] = DB::table('affiliate_products_loaded_searchpage')
             ->select(DB::raw('YEAR(offer_departure_date) as year'))
             ->whereNotNull('offer_departure_date')
+            ->where('offer_departure_date', '>=', now()) // Include only future dates
             ->distinct()
             ->orderBy('year', 'asc')
             ->pluck('year');
@@ -204,6 +207,7 @@ class SearchController extends Controller
         $facets['monthsByYear'] = DB::table('affiliate_products_loaded_searchpage')
             ->select(DB::raw('YEAR(offer_departure_date) as year'), DB::raw('MONTH(offer_departure_date) as month'))
             ->whereNotNull('offer_departure_date')
+            ->where('offer_departure_date', '>=', now()) // Include only future dates
             ->distinct()
             ->orderBy('year', 'asc')
             ->orderBy('month', 'asc')
