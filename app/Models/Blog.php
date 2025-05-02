@@ -16,7 +16,7 @@ class Blog extends Model
     protected $casts = [
         'timestamp' => 'datetime',
     ];
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,5 +28,6 @@ class Blog extends Model
         'slug',
         'title',
         'body',
+        'image',
     ];
 }

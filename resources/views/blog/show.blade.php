@@ -17,6 +17,10 @@
 
     <div class="row">
         <div class="col-md-4">
+            <img src="{{ file_exists(public_path('images/blogs/' . $blog->slug . '.jpg')) 
+                ? asset('images/blogs/' . $blog->slug . '.jpg') 
+                : asset('images/blogs/placeholder.jpg') }}" 
+                class="img-fluid rounded mb-3" alt="{{ $blog->title }}">
         </div>
         <div class="col-md-8">
 
