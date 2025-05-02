@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $cruiseline->name)
+@section('title', $cruiseline->meta_title . ' - CruiseBookers')
+@section('meta_description', $cruiseline->meta_description ?? 'Bekijk cruises van ' . $cruiseline->name)
 
 @section('content')
 <div class="container my-4">

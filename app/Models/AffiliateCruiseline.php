@@ -13,6 +13,8 @@ class AffiliateCruiseline extends Model
         'introduction',
         'is_blocked',
         'lead_paragraph',
+        'meta_title',
+        'meta_description',
         'name',
         'slogan',
         'slug',

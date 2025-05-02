@@ -117,7 +117,23 @@ class SearchController extends Controller
         if ($request->has('merchant')) {
             $query->where('merchant_name', $request->get('merchant'));
         }
-
+        if ($request->has('duration')) {
+            $durations = $request->input('duration');
+            $query->where(function ($q) use ($durations) {
+                foreach ($durations as $duration) {
+                    if ($duration === '1-3') {
+                        $q->orWhereBetween('offer_duration_days', [1, 3]);
+                    } elseif ($duration === '4-7') {
+                        $q->orWhereBetween('offer_duration_days', [4, 7]);
+                    } elseif ($duration === '8-14') {
+                        $q->orWhereBetween('offer_duration_days', [8, 14]);
+                    } elseif ($duration === '15+') {
+                        $q->orWhere('offer_duration_days', '>=', 15);
+                    }
+                }
+            });
+        }
+    
         // Fetch results with sorting and pagination
         $products = $query->orderBy($orderBy[0], $orderBy[1])->paginate(12);
 

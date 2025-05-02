@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Cruisebookers')</title>
+    <meta name="description"                    content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')">
     <meta name="viewport"                       content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification"       content="rYaL7RBa_eH1Hl4oIFCd4uOCW8uR9-OYs9zx8aULw7s" />
     <meta name="robots"                         content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 	<meta name="twitter:card"					content="summary_large_image" />
-	<meta name="twitter:description"			content="CruiseBookers · Voordelige cruise vakanties in 2025/2026">
+	<meta name="twitter:description"			content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')">
 	<meta name="twitter:image"					content="https://cruisebookers.nl/images/hero.jpg">
 	<meta name="twitter:image:alt"				content="CruiseBookers">
 	<meta name="twitter:site"					content="CruiseBookers.nl" />
-	<meta name="twitter:title"					content="CruiseBookers">
+	<meta name="twitter:title"					content="@yield('title', 'Cruisebookers')">
     <meta name="verification"                   content="d17273cf421505896976a37bd3651dd7" /> <!-- AWIN -->
-	<meta property="og:description"				content="CruiseBookers · Voordelige cruise vakanties in 2025/2026" />
+	<meta property="og:description"				content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')" />
 	<meta property="og:image"					content="https://cruisebookers.nl/images/hero.jpg" />
-	<meta property="og:image:alt"				content="See Nederland" />
+	<meta property="og:image:alt"				content="Cruisebookers" />
 	<meta property="og:image:height"			content="1375" />
 	<meta property="og:image:type"				content="image/jpeg" />
 	<meta property="og:image:width"				content="1920" />
 	<meta property="og:locale"					content="nl_NL" />
 	<meta property="og:site_name"				content="CruiseBookers" />
-	<meta property="og:title"					content="CruiseBookers" />
+	<meta property="og:title"					content="@yield('title', 'Cruisebookers')" />
 	<meta property="og:type"					content="website" />
 	<meta property="og:url"						content="https://cruisebookers.nl/" />
     <!-- Google Tag Manager -->

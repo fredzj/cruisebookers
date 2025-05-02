@@ -73,6 +73,35 @@
                     </div>
                 </div>
 
+                <!-- Duration filter -->
+                <div class="mb-3">
+                    <h6>Duur</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="duration[]" value="1-3" id="duration-1-3" {{ in_array('1-3', request('duration', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="duration-1-3">
+                            1-3 dagen
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="duration[]" value="4-7" id="duration-4-7" {{ in_array('4-7', request('duration', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="duration-4-7">
+                            4-7 dagen
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="duration[]" value="8-14" id="duration-8-14" {{ in_array('8-14', request('duration', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="duration-8-14">
+                            8-14 dagen
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="duration[]" value="15+" id="duration-15+" {{ in_array('15+', request('duration', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="duration-15+">
+                            15+ dagen
+                        </label>
+                    </div>
+                </div>
+
                 <!-- Continent and Country Facets -->
                 <div class="mb-3">
                     <h6>Bestemming</h6>
@@ -187,6 +216,18 @@
                             <span class="badge bg-warning me-2">
                                 Maand: {{ DateTime::createFromFormat('!m', $month)->format('F') }}
                                 <a href="{{ route('search', request()->except(['departure_month', 'page'])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif
+
+                    <!-- Duration Badge -->
+                    @if(request()->has('duration'))
+                        @foreach(request('duration') as $duration)
+                            <span class="badge bg-secondary me-2">
+                                {{ $duration }} dagen
+                                <a href="{{ route('search', array_merge(request()->except('duration', 'page'), ['duration' => array_diff(request('duration'), [$duration])])) }}" class="text-white ms-1">
                                     &times;
                                 </a>
                             </span>
