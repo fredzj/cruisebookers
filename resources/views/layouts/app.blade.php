@@ -25,13 +25,15 @@
 	<meta property="og:title"					content="@yield('title', 'Cruisebookers')" />
 	<meta property="og:type"					content="website" />
 	<meta property="og:url"						content="https://cruisebookers.nl/" />
-    <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-T3BFKVP2');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZ38CT8MGP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JZ38CT8MGP');
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical"                       href="@yield('canonical', url()->current())">
     <link rel="stylesheet"                      href="{{ asset('css/custom.css') }}">
@@ -75,9 +77,6 @@
     </script>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3BFKVP2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <nav class="navbar navbar-expand-lg navbar-dark xbg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
