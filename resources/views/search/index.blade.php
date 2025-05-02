@@ -338,8 +338,8 @@
                     @endif    
 
                     <!-- Clear All Filters -->
-                    @if(request()->hasAny(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant']))
-                        <a href="{{ route('search', request()->except(['cruiseline_category', 'departure_year', 'departure_month', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant', 'page'])) }}" class="btn btn-link text-danger">
+                    @if(request()->hasAny(['cruiseline_category', 'departure_year', 'departure_month', 'duration', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant']))
+                        <a href="{{ route('search', request()->except(['cruiseline_category', 'departure_year', 'departure_month', 'duration', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant', 'page'])) }}" class="btn btn-link text-danger">
                             Verwijder alle filters
                         </a>
                     @endif
@@ -361,6 +361,8 @@
                     <select name="sort" class="form-select" onchange="this.form.submit()">
                         <option value="price_asc" {{ $sortBy == 'price_asc' ? 'selected' : '' }}>Prijs: laag - hoog</option>
                         <option value="price_desc" {{ $sortBy == 'price_desc' ? 'selected' : '' }}>Prijs: hoog - laag</option>
+                        <option value="duration_asc" {{ $sortBy == 'duration_asc' ? 'selected' : '' }}>Reisduur: kort - lang</option>
+                        <option value="duration_desc" {{ $sortBy == 'duration_desc' ? 'selected' : '' }}>Reisduur: lang - kort</option>
                         <option value="name_asc" {{ $sortBy == 'name_asc' ? 'selected' : '' }}>Naam: A - Z</option>
                         <option value="name_desc" {{ $sortBy == 'name_desc' ? 'selected' : '' }}>Naam: Z - A</option>
                     </select>

@@ -49,10 +49,12 @@ class SearchController extends Controller
 
         // Sorting logic
         $orderBy = match ($sortBy) {
-            'price_asc' => ['price', 'asc'],
-            'price_desc' => ['price', 'desc'],
+            'duration_asc' => ['offer_duration_days', 'asc'],
+            'duration_desc' => ['offer_duration_days', 'desc'],
             'name_asc' => ['name', 'asc'],
             'name_desc' => ['name', 'desc'],
+            'price_asc' => ['price', 'asc'],
+            'price_desc' => ['price', 'desc'],
             default => ['price', 'asc'],
         };
 
