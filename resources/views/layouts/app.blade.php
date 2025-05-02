@@ -119,6 +119,7 @@
                         <li><a href="{{ route('cruiselines') }}" class="text-white">Cruisemaatschappijen</a></li>
                         <li><a href="{{ route('partners') }}" class="text-white">Reisorganisaties</a></li>
                         <li><a href="{{ route('traveladvices') }}" class="text-white">Reisadviezen</a></li>
+                        <li><a href="/blog" class="text-white">Blog</a></li>
                     </ul>
                 </div>
 
