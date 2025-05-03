@@ -159,7 +159,26 @@
                             </div>
                         </div>
                     </div>
-                
+
+                    <!-- Sailing Area Facet -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSailingArea">
+                            <button class="accordion-button {{ request()->has('sailing_area') ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSailingArea" aria-expanded="false" aria-controls="collapseSailingArea">
+                                Vaargebied
+                            </button>
+                        </h2>
+                        <div id="collapseSailingArea" class="accordion-collapse collapse {{ request()->has('sailing_area') ? 'show' : '' }}" aria-labelledby="headingSailingArea" data-bs-parent="#filterAccordion">
+                            <div class="accordion-body">
+                                @foreach($facets['sailingAreas'] as $sailingArea)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="sailing_area[]" value="{{ $sailingArea }}" id="sailing-area-{{ $sailingArea }}" {{ in_array($sailingArea, request('sailing_area', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="sailing-area-{{ $sailingArea }}">{{ $sailingArea }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>      
+
                     <!-- Cruiseline Facet -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingCruiseline">
@@ -300,7 +319,19 @@
                             </span>
                         @endforeach
                     @endif
-                        
+
+                    <!-- Sailing Area Badges -->
+                    @if(request()->has('sailing_area'))
+                        @foreach(request('sailing_area') as $sailingArea)
+                            <span class="badge bg-info me-2">
+                                {{ $sailingArea }}
+                                <a href="{{ route('search', array_merge(request()->except('sailing_area', 'page'), ['sailing_area' => array_diff(request('sailing_area'), [$sailingArea])])) }}" class="text-white ms-1">
+                                    &times;
+                                </a>
+                            </span>
+                        @endforeach
+                    @endif       
+
                     <!-- Cruiseline Badges -->
                     @if(request()->has('cruiseline'))
                         @foreach(request('cruiseline') as $cruiseline)
@@ -338,8 +369,8 @@
                     @endif    
 
                     <!-- Clear All Filters -->
-                    @if(request()->hasAny(['cruiseline_category', 'departure_year', 'departure_month', 'duration', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant']))
-                        <a href="{{ route('search', request()->except(['cruiseline_category', 'departure_year', 'departure_month', 'duration', 'continent', 'country', 'cruiseline', 'cruiseship', 'merchant', 'page'])) }}" class="btn btn-link text-danger">
+                    @if(request()->hasAny(['cruiseline_category', 'departure_year', 'departure_month', 'duration', 'continent', 'country', 'sailing_area', 'cruiseline', 'cruiseship', 'merchant']))
+                        <a href="{{ route('search', request()->except(['cruiseline_category', 'departure_year', 'departure_month', 'duration', 'continent', 'country', 'sailing_area', 'cruiseline', 'cruiseship', 'merchant', 'page'])) }}" class="btn btn-link text-danger">
                             Verwijder alle filters
                         </a>
                     @endif

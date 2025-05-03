@@ -36,6 +36,7 @@ class SearchController extends Controller
                             ->orWhere('cruiseship_name', 'LIKE', "%$term%")
                             ->orWhere('destination_continent_name', 'LIKE', "%$term%")
                             ->orWhere('destination_country_name', 'LIKE', "%$term%")
+                            ->orWhere('destination_sailingarea_name', 'LIKE', "%$term%")
                             ->orWhere('destination_region_name', 'LIKE', "%$term%")
                             ->orWhere('destination_province_name', 'LIKE', "%$term%")
                             ->orWhere('destination_city_name', 'LIKE', "%$term%");
@@ -64,6 +65,9 @@ class SearchController extends Controller
         }
         if ($request->has('country')) {
             $query->where('destination_country_name', $request->get('country'));
+        }
+        if ($request->has('sailing_area')) {
+            $query->where('destination_sailingarea_name', $request->get('sailing_area'));
         }
         if ($request->has('cruiseline')) {
             $query->whereIn('cruiseline_name', $request->get('cruiseline'));
@@ -179,13 +183,21 @@ class SearchController extends Controller
                 ->orderBy('merchant_name', 'asc')
                 ->pluck('merchant_name'),
         ];
-        
+
+        $facets['sailingAreas'] = DB::table('affiliate_products_loaded_searchpage')
+            ->select('destination_sailingarea_name')
+            ->whereNotNull('destination_sailingarea_name') // Ensure sailing_area is not null
+            ->where('destination_sailingarea_name', '!=', '') // Ensure sailing_area is not empty
+            ->distinct()
+            ->orderBy('destination_sailingarea_name', 'asc')
+            ->pluck('destination_sailingarea_name');
+
         $facets['cruiselines'] = DB::table('affiliate_products_loaded_searchpage')
-        ->select('cruiseline_name')
-        ->whereNotNull('cruiseline_name')
-        ->distinct()
-        ->orderBy('cruiseline_name', 'asc')
-        ->pluck('cruiseline_name');
+            ->select('cruiseline_name')
+            ->whereNotNull('cruiseline_name')
+            ->distinct()
+            ->orderBy('cruiseline_name', 'asc')
+            ->pluck('cruiseline_name');
     
         $facets['cruiseshipsByCruiseline'] = DB::table('affiliate_products_loaded_searchpage')
             ->select('cruiseline_name', 'cruiseship_name')

@@ -6,7 +6,7 @@
     <meta name="description"                    content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')">
     <meta name="viewport"                       content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification"       content="rYaL7RBa_eH1Hl4oIFCd4uOCW8uR9-OYs9zx8aULw7s" />
-    <meta name="robots"                         content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="robots"                         content="@yield('robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')" />
 	<meta name="twitter:card"					content="summary_large_image" />
 	<meta name="twitter:description"			content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')">
 	<meta name="twitter:image"					content="https://cruisebookers.nl/images/hero.jpg">
