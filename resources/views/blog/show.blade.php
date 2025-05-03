@@ -25,7 +25,7 @@
         <div class="col-md-8">
 
             <h1>{{ $blog->title }}</h1>
-            <p class="text-muted">{{ $blog->timestamp->format('F d, Y') }}</p>
+            <p class="text-muted">{{ $blog->timestamp->translatedFormat('l j F Y') }}</p>
             <div class="content">
                 {!! $blog->body !!}
             </div>
