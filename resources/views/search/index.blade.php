@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Zoekresultaten')
+@section('robots', 'noindex, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')
 
 @section('content')
 <div class="container my-4">
