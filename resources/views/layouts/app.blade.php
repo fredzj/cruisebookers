@@ -14,7 +14,8 @@
 	<meta name="twitter:site"					content="CruiseBookers.nl" />
 	<meta name="twitter:title"					content="@yield('title', 'Cruisebookers')">
     <meta name="verification"                   content="d17273cf421505896976a37bd3651dd7" /> <!-- AWIN -->
-	<meta property="og:description"				content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')" />
+	<meta name="b82df0e7a1e7d3f"                content="4f4224c6dd100bb1f881651af17967b7" /> <!-- DAISYCON -->
+    <meta property="og:description"				content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')" />
 	<meta property="og:image"					content="https://cruisebookers.nl/images/hero.jpg" />
 	<meta property="og:image:alt"				content="Cruisebookers" />
 	<meta property="og:image:height"			content="1375" />
