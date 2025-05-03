@@ -4,6 +4,13 @@
 @section('meta_description', $cruiseline->meta_description ?? 'Bekijk cruises van ' . $cruiseline->name)
 
 @section('content')
+<div class="container-fluid p-0">
+    @if(file_exists(public_path('images/cruiselines/youtube-' . $cruiseline->slug . '.jpg')))
+        <div class="hero-image" style="background-image: url('{{ asset('images/cruiselines/youtube-' . $cruiseline->slug . '.jpg') }}'); height: 300px; background-size: cover; background-position: center;">
+        </div>
+    @endif
+</div>
+
 <div class="container my-4">
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
