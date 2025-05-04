@@ -105,4 +105,33 @@
         </div>
     </div>
 </div>
+
+<!-- Add Structured Data -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "{{ $product->name }}",
+        "image": [
+            @if(isset($product->additional_data->images) && is_array($product->additional_data->images))
+                @foreach($product->additional_data->images as $image)
+                    "{{ $image }}"{{ !$loop->last ? ',' : '' }}
+                @endforeach
+            @endif
+        ],
+        "description": "{{ $product->additional_data->description ?? '' }}",
+        "brand": {
+            "@type": "Brand",
+            "name": "{{ $product->cruiseline_name ?? 'Unknown' }}"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "{{ url()->current() }}",
+            "priceCurrency": "EUR",
+            "price": "{{ $product->price ?? 0 }}",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "{{ \Carbon\Carbon::now()->toIso8601String() }}"
+        }
+    }
+</script>
 @endsection
