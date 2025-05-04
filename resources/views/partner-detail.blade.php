@@ -33,7 +33,7 @@
         <div class="col-md-8">
             <h1>{{ $merchant->name }}</h1>
             <p>{{ $merchant->type }}</p>
-            <p>{{ $merchant->description }}</p>
+            <p>{!! $merchant->description !!}</p>
 
             <!-- CTA Button -->
             @if($merchant->has_products)
