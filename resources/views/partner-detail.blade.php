@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $merchant->name)
+@section('title', $merchant->meta_title . ' - CruiseBookers' ?? $merchant->name)
+@section('meta_description', $merchant->meta_description ?? 'Bekijk cruises van ' . $merchant->name)
 
 @section('content')
 <div class="container my-4">
