@@ -38,6 +38,7 @@
                     @endforeach
                 </div>
             </div>
+<!--            <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="nl-NL" data-gyg-widget="activities" data-gyg-number-of-items="3" data-gyg-partner-id="GX9K7AY" data-gyg-q="cruise"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/rome-civitavecchia-cruise-port-l31006/">GetYourGuide</a></span></div> -->
         </div>
     </div>
 </div>

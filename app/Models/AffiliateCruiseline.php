@@ -16,7 +16,7 @@ class AffiliateCruiseline extends Model
         'meta_title',
         'meta_description',
         'name',
-        'slogan',
+        'subtitle',
         'slug',
         'url_logo',
     ];

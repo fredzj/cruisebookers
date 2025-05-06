@@ -28,6 +28,7 @@ class Blog extends Model
         'slug',
         'title',
         'body',
+        'background_image',
         'image',
     ];
 }

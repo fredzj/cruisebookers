@@ -90,6 +90,9 @@ class SearchController extends Controller
         if ($request->has('holidaytype_is_rivercruise_danube')) {
             $query->where('holidaytype_is_rivercruise_danube', $request->get('holidaytype_is_rivercruise_danube'));
         }
+        if ($request->has('holidaytype_is_rivercruise_douro')) {
+            $query->where('holidaytype_is_rivercruise_douro', $request->get('holidaytype_is_rivercruise_douro'));
+        }
         if ($request->has('holidaytype_is_rivercruise_moselle')) {
             $query->where('holidaytype_is_rivercruise_moselle', $request->get('holidaytype_is_rivercruise_moselle'));
         }
@@ -98,6 +101,12 @@ class SearchController extends Controller
         }
         if ($request->has('holidaytype_is_rivercruise_rhine')) {
             $query->where('holidaytype_is_rivercruise_rhine', $request->get('holidaytype_is_rivercruise_rhine'));
+        }
+        if ($request->has('holidaytype_is_rivercruise_rhone')) {
+            $query->where('holidaytype_is_rivercruise_rhone', $request->get('holidaytype_is_rivercruise_rhone'));
+        }
+        if ($request->has('holidaytype_is_rivercruise_seine')) {
+            $query->where('holidaytype_is_rivercruise_seine', $request->get('holidaytype_is_rivercruise_seine'));
         }
         if ($request->has('holidaytype_is_rivercruise_volga')) {
             $query->where('holidaytype_is_rivercruise_volga', $request->get('holidaytype_is_rivercruise_volga'));

@@ -24,7 +24,7 @@
                         <img src="{{ $cruiseline->url_logo }}" class="card-img-top p-3" alt="{{ $cruiseline->name }}">
                         <div class="card-body bg-light">
                             <h5 class="card-title">{{ $cruiseline->name }}</h5>
-                            <p class="card-text">{{ $cruiseline->slogan }}</p>
+                            <p class="card-text">{{ $cruiseline->subtitle }}</p>
                         </div>
                     </div>
                 </a>

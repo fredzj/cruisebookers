@@ -37,10 +37,26 @@
         </div>
         <div class="col-md-8">
             <h1>{{ $cruiseline->name }}</h1>
-            <h2>{{ $cruiseline->slogan }}</h2>
-            <p class="lead">{{ $cruiseline->lead_paragraph }}</p>
-            {!! $cruiseline->introduction !!}
-            {!! $cruiseline->description !!}
+            <h2>{{ $cruiseline->subtitle }}</h2>
+            @if(isset($cruiseline->lead_paragraph) && $cruiseline->lead_paragraph != '')
+                <p class="lead">{!! $cruiseline->lead_paragraph !!}</p>
+            @endif
+            @if(isset($cruiseline->second_paragraph) && $cruiseline->second_paragraph != '')
+                {!! $cruiseline->second_paragraph !!}
+            @endif
+            @if(isset($cruiseline->third_paragraph) && $cruiseline->third_paragraph != '')
+                {!! $cruiseline->third_paragraph !!}
+            @endif
+            @if(isset($cruiseline->fourth_paragraph) && $cruiseline->fourth_paragraph != '')
+                {!! $cruiseline->fourth_paragraph !!}
+            @endif
+
+            @if(isset($cruiseline->introduction) && $cruiseline->introduction != '')
+                {!! $cruiseline->introduction !!}
+            @endif
+            @if(isset($cruiseline->description) && $cruiseline->description != '')
+                {!! $cruiseline->description !!}
+            @endif
 
             <!-- CTA Button -->
             <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="btn btn-primary mt-4">

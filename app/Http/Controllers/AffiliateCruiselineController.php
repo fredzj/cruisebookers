@@ -21,7 +21,7 @@ class AffiliateCruiselineController extends Controller
     public function index()
     {
         $cruiselines = AffiliateCruiseline::nonBlocked()
-            ->select('name', 'slogan', 'slug', 'url_logo')
+            ->select('name', 'subtitle', 'slug', 'url_logo')
             ->orderBy('name', 'asc') // Sort by name in ascending order
             ->get();
 

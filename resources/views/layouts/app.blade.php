@@ -76,6 +76,8 @@
             ]
         }
     </script>
+    <!-- GetYourGuide Analytics -->
+    <!-- <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="GX9K7AY"></script> -->
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark xbg-dark sticky-top">

@@ -93,7 +93,7 @@
                 <p><strong>Beschrijving:</strong> {!! $product->additional_data->description !!}</p>
             @endif
             @if(isset($product->additional_data->accommodation_descriptionlong))
-                <p><strong>Uitgebreide Beschrijving:</strong> {{ $product->additional_data->accommodation_descriptionlong }}</p>
+                <p><strong>Uitgebreide Beschrijving:</strong> {!! $product->additional_data->accommodation_descriptionlong !!}</p>
             @endif
             @if(isset($product->additional_data->accommodation_facilities) && $product->additional_data->accommodation_facilities <> '')
                 <p><strong>Faciliteiten:</strong> {{ $product->additional_data->accommodation_facilities }}</p>
