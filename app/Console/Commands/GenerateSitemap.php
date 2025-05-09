@@ -28,11 +28,26 @@ class GenerateSitemap extends Command
      */
     public function handle(): void
     {
-        $sitemap = Sitemap::create()
-            ->add(Url::create('/')->setPriority(1.0)->setChangeFrequency('daily'))
-            ->add(Url::create('/cruisemaatschappijen')->setPriority(0.8)->setChangeFrequency('weekly'))
-            ->add(Url::create('/partners')->setPriority(0.8)->setChangeFrequency('monthly'))
-            ->add(Url::create('/reisadviezen')->setPriority(0.8)->setChangeFrequency('monthly'));
+        // Generate the main sitemap
+        $this->createMainSitemap();
+
+        // Generate the Daisycon sitemap
+        $this->createDaisyconSitemap();
+
+        // Generate the TradeTracker sitemap
+        $this->createTradeTrackerSitemap();
+    }
+
+    private function createMainSitemap()
+    {
+        // Create a new sitemap instance
+        $sitemap = Sitemap::create();
+
+        // Add static URLs
+        $sitemap->add(Url::create('/')->setPriority(1.0)->setChangeFrequency('daily'));
+        $sitemap->add(Url::create('/cruisemaatschappijen')->setPriority(0.8)->setChangeFrequency('weekly'));
+        $sitemap->add(Url::create('/partners')->setPriority(0.8)->setChangeFrequency('monthly'));
+        $sitemap->add(Url::create('/reisadviezen')->setPriority(0.8)->setChangeFrequency('monthly'));
 
         // Add dynamic URLs (e.g., products, categories)
         foreach (\App\Models\AffiliateCruiseline::query()->nonBlocked()->get() as $cruiseline) {
@@ -54,6 +69,44 @@ class GenerateSitemap extends Command
         // Save the sitemap to the public directory
         $sitemap->writeToFile(public_path('sitemap.xml'));
 
-        $this->info('Sitemap generated successfully!');
+        $this->info('Main sitemap generated successfully!');
+    }
+
+    private function createDaisyconSitemap()
+    {
+        $sitemap = Sitemap::create();
+
+        // Add Daisycon products dynamically
+        foreach (\App\Models\AffiliateProductsLoaded::whereHas('merchant', function ($query) {
+            $query->where('affiliate_network_code', 'DC');
+        })->get() as $product) {
+            $sitemap->add(Url::create("/product/{$product->slug}")
+            ->setPriority(0.6)
+            ->setChangeFrequency('daily'));
+        }
+
+        // Save the sitemap to the public directory
+        $sitemap->writeToFile(public_path('daisycon_sitemap.xml'));
+
+        $this->info('Daisycon sitemap generated successfully!');
+    }
+
+    private function createTradeTrackerSitemap()
+    {
+        $sitemap = Sitemap::create();
+
+        // Add TradeTracker products dynamically
+        foreach (\App\Models\AffiliateProductsLoaded::whereHas('merchant', function ($query) {
+            $query->where('affiliate_network_code', 'TT');
+        })->get() as $product) {
+            $sitemap->add(Url::create("/product/{$product->slug}")
+            ->setPriority(0.6)
+            ->setChangeFrequency('daily'));
+        }
+
+        // Save the sitemap to the public directory
+        $sitemap->writeToFile(public_path('tradetracker_sitemap.xml'));
+
+        $this->info('TradeTracker sitemap generated successfully!');
     }
 }

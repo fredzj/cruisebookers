@@ -23,6 +23,6 @@ class AffiliateProductsLoaded extends Model
 
     public function merchant()
     {
-        return $this->belongsTo(Merchant::class, 'merchant_id');
+        return $this->belongsTo(AffiliateNetworkMerchant::class, 'merchant_id');
     }
 }
