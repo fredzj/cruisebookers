@@ -21,9 +21,22 @@ class ProductController extends Controller
             ->first();
 
         if (!$product) {
-            abort(404, 'Product not found');
-        }
+            // Extract the merchant slug from the product slug (before the first dash)
+            $merchantSlug = explode('-', $slug)[0];
 
+            // Look up the merchant name using the merchant slug
+            $merchant = DB::table('affiliate_networks_merchants')
+                ->where('slug', $merchantSlug)
+                ->first();
+
+            if ($merchant) {
+                // Redirect to the search page with the merchant pre-selected
+                return redirect()->route('search', ['merchant' => [$merchant->name]]);
+            }
+            // If no merchant is found, redirect to the search page without filters
+            return redirect()->route('search');
+        }
+        
         // Fetch additional product data from affiliate_products_loaded_productpage
         $productPageData = DB::table('affiliate_products_loaded_productpage')
             ->where('slug', $slug)
