@@ -20,15 +20,15 @@ class ProductController extends Controller
             ->where('slug', $slug)
             ->first();
 
+        // Extract the merchant slug from the product slug (before the first dash)
+        $merchantSlug = explode('-', $slug)[0];
+        // Look up the merchant name using the merchant slug
+        $merchant = DB::table('affiliate_networks_merchants')
+            ->where('slug', $merchantSlug)
+            ->first();
+        $product->merchant_name = $merchant->name ?? null;
+
         if (!$product) {
-            // Extract the merchant slug from the product slug (before the first dash)
-            $merchantSlug = explode('-', $slug)[0];
-
-            // Look up the merchant name using the merchant slug
-            $merchant = DB::table('affiliate_networks_merchants')
-                ->where('slug', $merchantSlug)
-                ->first();
-
             if ($merchant) {
                 // Redirect to the search page with the merchant pre-selected
                 return redirect()->route('search', ['merchant' => [$merchant->name]]);

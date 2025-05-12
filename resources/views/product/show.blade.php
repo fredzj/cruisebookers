@@ -101,7 +101,7 @@
             @if(isset($product->additional_data->accommodation_usps))
                 <p><strong>USP's:</strong> {{ $product->additional_data->accommodation_usps }}</p>
             @endif
-            <a href="{{ $product->additional_data->url }}" class="btn btn-primary mt-3" target="_blank">Boek Nu</a>
+            <a href="{{ $product->additional_data->url }}" class="btn btn-primary mt-3" target="_blank">Bekijk bij {{ $product->merchant_name }}</a>
         </div>
     </div>
 </div>
@@ -130,7 +130,57 @@
             "priceCurrency": "EUR",
             "price": "{{ $product->price ?? 0 }}",
             "availability": "https://schema.org/InStock",
-            "validFrom": "{{ \Carbon\Carbon::now()->toIso8601String() }}"
+            "validFrom": "{{ \Carbon\Carbon::now()->toIso8601String() }}",
+            "priceValidUntil": "{{ \Carbon\Carbon::now()->addYear()->toIso8601String() }}",
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "name": "",
+                "url": "",
+                "returnPolicyCategory": "MerchantReturnUnspecified",
+                "applicableCountry": "NL"
+            },
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "NL"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "d" // Days
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "d" // Days
+                    }
+                },
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 0,
+                    "currency": "EUR"
+                }
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "",
+            "reviewCount": ""
+        },
+        "review": {
+            "@type": "Review",
+            "author": "",
+            "datePublished": "",
+            "description": "",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": ""
+            }
         }
     }
 </script>
