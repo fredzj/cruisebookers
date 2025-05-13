@@ -49,4 +49,45 @@
         </div>
     </div>
 </div>
-@endsection
+
+<!-- Add Structured Data -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ $merchant->name }}",
+        "url": "{{ url()->current() }}",
+        "logo": "{{ $merchant->url_merchant_logo }}",
+        "description": "{{ $merchant->name }} is een reisorganisatie die gespecialiseerd is in cruises.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "NL"
+        },
+        "memberOf": [
+            @if(isset($merchant->is_member_anvr) && $merchant->is_member_anvr == 1)
+                {
+                    "@type": "Organization",
+                    "name": "ANVR"
+                }{{ isset($merchant->is_member_cf) || isset($merchant->is_member_sgr) ? ',' : '' }}
+            @endif
+            @if(isset($merchant->is_member_cf) && $merchant->is_member_cf == 1)
+                {
+                    "@type": "Organization",
+                    "name": "Calamiteitenfonds"
+                }{{ isset($merchant->is_member_sgr) ? ',' : '' }}
+            @endif
+            @if(isset($merchant->is_member_sgr) && $merchant->is_member_sgr == 1)
+                {
+                    "@type": "Organization",
+                    "name": "SGR"
+                }
+            @endif
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ $merchant->rating_value ?? '0' }}",
+            "reviewCount": "{{ $merchant->review_count ?? '0' }}"
+        }
+    }
+    </script>
+    @endsection
