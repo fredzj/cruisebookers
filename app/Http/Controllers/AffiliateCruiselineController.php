@@ -21,6 +21,11 @@ class AffiliateCruiselineController extends Controller
     public function index()
     {
         $cruiselines = AffiliateCruiseline::nonBlocked()
+            ->whereIn('name', function ($query) {
+                $query->select('cruiseline_name')
+                    ->from('affiliate_products_loaded_searchpage')
+                    ->distinct();
+            })
             ->select('name', 'subtitle', 'slug', 'url_logo')
             ->orderBy('name', 'asc') // Sort by name in ascending order
             ->get();
@@ -36,6 +41,11 @@ class AffiliateCruiselineController extends Controller
     public function all()
     {
         return AffiliateCruiseline::nonBlocked()
+            ->whereIn('name', function ($query) {
+                $query->select('cruiseline_name')
+                    ->from('affiliate_products_loaded_searchpage')
+                    ->distinct();
+            })
             ->select('slug', 'name')
             ->orderBy('name', 'asc') // Sort by name in ascending order
             ->get();
