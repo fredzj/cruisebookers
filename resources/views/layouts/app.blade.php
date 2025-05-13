@@ -83,7 +83,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark xbg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('images/logo-cruisebookers.jpg') }}" alt="Logo" style="height: 40px;">
+                <img width="40" height="40" src="{{ asset('images/logo-cruisebookers.jpg') }}" alt="Logo" style="height: 40px;">
                 CruiseBookers
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -110,7 +110,7 @@
                 <!-- Column 1 -->
                 <div class="col-md-2">
                     <h5>CruiseBookers</h5>
-                    <img src="{{ asset('images/logo-cruisebookers.jpg') }}" alt="Cruisebookers Logo" class="img-fluid mb-2">
+                    <img width="196" height="196" src="{{ asset('images/logo-cruisebookers.jpg') }}" alt="Cruisebookers Logo" class="img-fluid mb-2">
                     <ul class="list-unstyled">
                         <li><a href="{{ route('privacyverklaring') }}" class="text-white">Privacyverklaring</a></li>
                         <li><a href="{{ route('cookieverklaring') }}" class="text-white">Cookieverklaring</a></li>

@@ -136,7 +136,7 @@
                 "@type": "MerchantReturnPolicy",
                 "name": "",
                 "url": "",
-                "returnPolicyCategory": "MerchantReturnUnspecified",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnUnspecified",
                 "applicableCountry": "NL"
             },
             "shippingDetails": {

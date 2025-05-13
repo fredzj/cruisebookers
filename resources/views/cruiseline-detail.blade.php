@@ -38,6 +38,12 @@
         <div class="col-md-8">
             <h1>{{ $cruiseline->name }}</h1>
             <h2>{{ $cruiseline->subtitle }}</h2>
+
+            <!-- CTA Button -->
+            <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="btn btn-primary mt-4 mb-4">
+                Bekijk de aanbiedingen van {{ $cruiseline->name }}
+            </a>
+
             @if(isset($cruiseline->lead_paragraph) && $cruiseline->lead_paragraph != '')
                 <p class="lead">{!! $cruiseline->lead_paragraph !!}</p>
             @endif
@@ -60,7 +66,7 @@
 
             <!-- CTA Button -->
             <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="btn btn-primary mt-4">
-                Bekijk cruises van {{ $cruiseline->name }}
+                Bekijk de cruises van {{ $cruiseline->name }}
             </a>
 
             <div class="row mt-5">

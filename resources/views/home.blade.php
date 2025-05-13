@@ -7,7 +7,7 @@
 @section('content')
 <!-- Hero Section -->
 <div class="hero mb-5">
-    <img src="{{ asset('images/hero.jpg') }}" class="img-fluid w-100" alt="CruiseBookers">
+    <img src="{{ asset('images/hero.webp') }}" class="img-fluid w-100" alt="CruiseBookers">
     <div class="hero-text text-center">
         <h1 class="display-4 text-white">Welke cruise past bij jou?</h1>
         <div class="container my-5">
@@ -29,7 +29,7 @@
         <div class="col">
             <a href="{{ route('search', ['cruiseline_category' => ['zeecruise']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise.jpg') }}" class="card-img-top" alt="Zeecruise">
+                    <img width="416" height="150" src="{{ asset('images/zeecruise.webp') }}" class="card-img-top" alt="Zeecruise">
                     <div class="card-body">
                         <h5 class="card-title">Zeecruises</h5>
                         <p class="card-text">Geniet van een luxe cruise over de open zee.</p>
@@ -40,7 +40,7 @@
         <div class="col">
             <a href="{{ route('search', ['cruiseline_category' => ['riviercruise']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/riviercruise.jpg') }}" class="card-img-top" alt="Riviercruise">
+                    <img width="416" height="150" src="{{ asset('images/riviercruise.webp') }}" class="card-img-top" alt="Riviercruise">
                     <div class="card-body">
                         <h5 class="card-title">Riviercruises</h5>
                         <p class="card-text">Ontdek prachtige steden langs de mooiste rivieren.</p>
@@ -51,7 +51,7 @@
         <div class="col">
             <a href="{{ route('search', ['cruiseline_category' => ['minicruise']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/minicruise.jpg') }}" class="card-img-top" alt="Minicruise">
+                    <img width="416" height="150" src="{{ asset('images/minicruise.webp') }}" class="card-img-top" alt="Minicruise">
                     <div class="card-body">
                         <h5 class="card-title">Minicruises</h5>
                         <p class="card-text">Een korte maar onvergetelijke cruise-ervaring.</p>
@@ -67,7 +67,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_seacruise_mediterranean' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise-middellandse-zee.jpg') }}" class="card-img-top" alt="Middellandse Zee Cruises">
+                    <img width="306" height="150" src="{{ asset('images/zeecruise-middellandse-zee.webp') }}" class="card-img-top" alt="Middellandse Zee Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Middellandse Zee Cruises</h5>
                         <p class="card-text">Verken de prachtige kustlijnen van de Middellandse Zee.</p>
@@ -78,7 +78,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_seacruise_caribbean' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise-caraibische-cruises.jpg') }}" class="card-img-top" alt="Caraïbische Cruises">
+                    <img width="306" height="150" src="{{ asset('images/zeecruise-caraibische-cruises.webp') }}" class="card-img-top" alt="Caraïbische Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Caraïbische Cruises</h5>
                         <p class="card-text">Ontsnap naar tropische eilanden en turquoise wateren.</p>
@@ -89,7 +89,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_seacruise_world' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise-wereldcruises.jpg') }}" class="card-img-top" alt="Wereldcruises">
+                    <img width="306" height="150" src="{{ asset('images/zeecruise-wereldcruises.webp') }}" class="card-img-top" alt="Wereldcruises">
                     <div class="card-body">
                         <h5 class="card-title">Wereldcruises</h5>
                         <p class="card-text">Beleef een reis rond de wereld op een luxe schip.</p>
@@ -100,7 +100,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_seacruise_sailing' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise-zeilcruises.jpg') }}" class="card-img-top" alt="Zeilcruises">
+                    <img width="306" height="150" src="{{ asset('images/zeecruise-zeilcruises.webp') }}" class="card-img-top" alt="Zeilcruises">
                     <div class="card-body">
                         <h5 class="card-title">Zeilcruises</h5>
                         <p class="card-text">Ervaar de magie van zeilen op open water.</p>
@@ -111,7 +111,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_seacruise_bluecruise' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise-blue-cruises.jpg') }}" class="card-img-top" alt="Blue Cruises">
+                    <img width="306" height="150" src="{{ asset('images/zeecruise-blue-cruises.webp') }}" class="card-img-top" alt="Blue Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Blue Cruises</h5>
                         <p class="card-text">Ontdek de verborgen baaien van de Egeïsche Zee.</p>
@@ -122,7 +122,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_seacruise_hurtigruten' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise-hurtigruten.jpg') }}" class="card-img-top" alt="Hurtigruten Cruises">
+                    <img width="306" height="150" src="{{ asset('images/zeecruise-hurtigruten.webp') }}" class="card-img-top" alt="Hurtigruten Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Hurtigruten Cruises</h5>
                         <p class="card-text">Verken de adembenemende fjorden van Noorwegen.</p>
@@ -133,7 +133,7 @@
         <div class="col">
             <a href="{{ route('search', ['continent' => ['Antarctica']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/zeecruise-antarctica.jpg') }}" class="card-img-top" alt="Antarctica Cruises">
+                    <img width="306" height="150" src="{{ asset('images/zeecruise-antarctica.webp') }}" class="card-img-top" alt="Antarctica Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Antarctica Cruises</h5>
                         <p class="card-text">Beleef een unieke reis naar de ijzige wereld van Antarctica.</p>
@@ -149,7 +149,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_rivercruise_rhine' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/riviercruise-rijn.jpg') }}" class="card-img-top" alt="Rijn Cruises">
+                    <img width="416" height="150" src="{{ asset('images/riviercruise-rijn.webp') }}" class="card-img-top" alt="Rijn Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Rijncruises</h5>
                         <p class="card-text">Beleef de romantiek van de Rijn met zijn kastelen en wijngaarden.</p>
@@ -160,7 +160,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_rivercruise_moselle' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/riviercruise-moezel.jpg') }}" class="card-img-top" alt="Moezel Cruises">
+                    <img width="416" height="150" src="{{ asset('images/riviercruise-moezel.webp') }}" class="card-img-top" alt="Moezel Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Moezelcruises</h5>
                         <p class="card-text">Geniet van de schilderachtige Moezelvallei en haar wijngaarden.</p>
@@ -171,7 +171,7 @@
         <div class="col">
             <a href="{{ route('search', ['holidaytype_is_rivercruise_danube' => ['1']]) }}" class="text-decoration-none">
                 <div class="card h-100">
-                    <img src="{{ asset('images/riviercruise-donau.jpg') }}" class="card-img-top" alt="Donau Cruises">
+                    <img width="416" height="150" src="{{ asset('images/riviercruise-donau.webp') }}" class="card-img-top" alt="Donau Cruises">
                     <div class="card-body">
                         <h5 class="card-title">Donaucruises</h5>
                         <p class="card-text">Ontdek de historische steden langs de majestueuze Donau.</p>
@@ -188,28 +188,17 @@
         <div class="marquee-content">
             @foreach($cruiselines as $cruiseline)
                 <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="text-decoration-none">
-                    <img src="{{ $cruiseline->url_logo }}" class="img-fluid mx-3" alt="{{ $cruiseline->name }}" style="max-height: 80px;">
+                    <img width="80" height="80" src="{{ $cruiseline->url_logo }}" class="img-fluid mx-3" alt="{{ $cruiseline->name }}" style="max-height: 80px;">
                 </a>
             @endforeach
             <!-- Duplicate the content for continuous scrolling -->
             @foreach($cruiselines as $cruiseline)
                 <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="text-decoration-none">
-                    <img src="{{ $cruiseline->url_logo }}" class="img-fluid mx-3" alt="{{ $cruiseline->name }}" style="max-height: 80px;">
+                    <img width="80" height="80" src="{{ $cruiseline->url_logo }}" class="img-fluid mx-3" alt="{{ $cruiseline->name }}" style="max-height: 80px;">
                 </a>
             @endforeach
         </div>
     </div>
 </div>
-<!--
-<div class="container my-4">
-    !-- Random Banner Section --
-    @if(isset($randomBanner))
-        <div class="random-banner text-center mb-4">
-            <a href="{{ route('search', ['merchant' => [$randomBanner->merchant_slug]]) }}">
-                {!! $randomBanner->banner !!}
-            </a>
-        </div>
-    @endif
-</div>
--->
+
 @endsection
