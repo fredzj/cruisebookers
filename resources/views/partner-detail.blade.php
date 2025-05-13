@@ -85,6 +85,8 @@
         ],
         "aggregateRating": {
             "@type": "AggregateRating",
+            "bestRating": "10",
+            "worstRating": "1",
             "ratingValue": "{{ $merchant->rating_value ?? '0' }}",
             "reviewCount": "{{ $merchant->review_count ?? '0' }}"
         }
