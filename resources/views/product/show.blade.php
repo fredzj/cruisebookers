@@ -136,7 +136,7 @@
                 "@type": "MerchantReturnPolicy",
                 "name": "",
                 "url": "",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnUnspecified",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
                 "applicableCountry": "NL"
             },
             "shippingDetails": {
@@ -169,7 +169,8 @@
         },
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "",
+            "ratingValue": "{{ $product->additional_data->accommodation_rating ?? '' }}",
+            "bestRating": "10",
             "reviewCount": ""
         },
         "review": {
