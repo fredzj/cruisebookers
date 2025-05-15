@@ -71,6 +71,9 @@
 
             <div class="row mt-5">
                 <h3 class="mb-4">Onze Schepen</h3>
+                @if(isset($cruiseline->fleet_paragraph) && $cruiseline->fleet_paragraph != '')
+                    {!! $cruiseline->fleet_paragraph !!}
+                @endif
                 @if(isset($cruiseline->cruiseships) && $cruiseline->cruiseships->count() > 0)
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                         @foreach($cruiseline->cruiseships->sortBy('name') as $ship)
