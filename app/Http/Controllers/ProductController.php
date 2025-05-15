@@ -19,10 +19,6 @@ class ProductController extends Controller
         $product = DB::table('affiliate_products_loaded_searchpage')
             ->where('slug', $slug)
             ->first();
-
-        if (!$product) {
-            return redirect()->route('search');
-        }
     
         // Extract the merchant slug from the product slug (before the first dash)
         $merchantSlug = explode('-', $slug)[0];
@@ -30,6 +26,17 @@ class ProductController extends Controller
         $merchant = DB::table('affiliate_networks_merchants')
             ->where('slug', $merchantSlug)
             ->first();
+
+        if (!$product) {
+            if (!$merchant) {
+                // Redirect to the search page without filters
+                return redirect()->route('search');
+            } else {
+                // Redirect to the partner page using the merchant's slug
+                return redirect()->route('partners.show', ['slug' => $merchant->slug]);
+            }
+        }
+
         $product->merchant_name = $merchant->name ?? null;
 
 //        if (!$product) {
