@@ -167,21 +167,25 @@
                 }
             }
         },
+@if(!empty($product->additional_data->accommodation_rating))
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "{{ $product->additional_data->accommodation_rating ?? '' }}",
             "bestRating": "10",
             "reviewCount": ""
         },
+@endif
         "review": {
             "@type": "Review",
             "author": "",
             "datePublished": "",
             "description": "",
+@if(!empty($product->additional_data->accommodation_rating))
             "reviewRating": {
                 "@type": "Rating",
-                "ratingValue": ""
+                "ratingValue": "{{ $product->additional_data->accommodation_rating ?? '' }}"
             }
+@endif
         }
     }
 </script>
