@@ -65,7 +65,7 @@
     <h2 class="my-5">Populaire Zeecruises</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         <div class="col">
-            <a href="{{ route('search', ['holidaytype_is_seacruise_mediterranean' => ['1']]) }}" class="text-decoration-none">
+            <a href="{{ route('search', ['sailing_area' => ['Middellandse zeegebied']]) }}" class="text-decoration-none">
                 <div class="card h-100">
                     <img width="306" height="150" src="{{ asset('images/zeecruise-middellandse-zee.webp') }}" class="card-img-top" alt="Middellandse Zee Cruises">
                     <div class="card-body">
@@ -76,7 +76,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('search', ['holidaytype_is_seacruise_caribbean' => ['1']]) }}" class="text-decoration-none">
+            <a href="{{ route('search', ['sailing_area' => ['Caribisch zeegebied']]) }}" class="text-decoration-none">
                 <div class="card h-100">
                     <img width="306" height="150" src="{{ asset('images/zeecruise-caraibische-cruises.webp') }}" class="card-img-top" alt="Caraïbische Cruises">
                     <div class="card-body">
@@ -87,7 +87,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('search', ['holidaytype_is_seacruise_world' => ['1']]) }}" class="text-decoration-none">
+            <a href="{{ route('search', ['sailing_area' => ['Wereldcruise']]) }}" class="text-decoration-none">
                 <div class="card h-100">
                     <img width="306" height="150" src="{{ asset('images/zeecruise-wereldcruises.webp') }}" class="card-img-top" alt="Wereldcruises">
                     <div class="card-body">
@@ -120,7 +120,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{ route('search', ['holidaytype_is_seacruise_hurtigruten' => ['1']]) }}" class="text-decoration-none">
+            <a href="{{ route('search', ['cruiseline' => ['Hurtigruten']]) }}" class="text-decoration-none">
                 <div class="card h-100">
                     <img width="306" height="150" src="{{ asset('images/zeecruise-hurtigruten.webp') }}" class="card-img-top" alt="Hurtigruten Cruises">
                     <div class="card-body">
