@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $product->name)
-@section('meta_description', $product->additional_data->accommodation_descriptionshort ?? 'Bekijk cruises van ' . $merchant->name)
+@section('meta_description', Str::limit($product->additional_data->accommodation_descriptionshort ?? 'Bekijk cruises van ' . $product->merchant_name, 155))
 @section('meta_image', $product->additional_data->images[0] ?? 'https://cruisebookers.nl/images/hero.jpg')
 @section('meta_image_alt', $product->name)
 
