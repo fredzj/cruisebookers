@@ -152,7 +152,23 @@
                         <li><a href="{{ route('search', ['holidaytype_is_rivercruise_nile' => ['1']]) }}" class="text-white">Nijlcruises</a></li>
                     </ul>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <h5>Reisorganisaties</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('search', ['merchant' => ['BBI Travel']]) }}" class="text-white">BBI Travel</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['Corendon']]) }}" class="text-white">Corendon</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['CruiseOnline']]) }}" class="text-white">CruiseOnline</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['CruiseReizen']]) }}" class="text-white">CruiseReizen</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['de Jong Intra']]) }}" class="text-white">de Jong Intra</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['Fital']]) }}" class="text-white">Fital</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['Merapi']]) }}" class="text-white">Merapi</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['OAD']]) }}" class="text-white">OAD</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['Oceanwide Expeditions']]) }}" class="text-white">Oceanwide Expeditions</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['Stip Reizen']]) }}" class="text-white">Stip Reizen</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['Traveldeal']]) }}" class="text-white">Traveldeal</a></li>
+                        <li><a href="{{ route('search', ['merchant' => ['TUI']]) }}" class="text-white">TUI</a></li>
+                    </ul>
+                </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-2"></div>
             </div>
