@@ -9,16 +9,16 @@
     <meta name="robots"                         content="@yield('robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')" />
 	<meta name="twitter:card"					content="summary_large_image" />
 	<meta name="twitter:description"			content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')">
-	<meta name="twitter:image"					content="https://cruisebookers.nl/images/hero.jpg">
-	<meta name="twitter:image:alt"				content="CruiseBookers">
+	<meta name="twitter:image"					content="@yield('meta_image', 'https://cruisebookers.nl/images/hero.jpg')">
+	<meta name="twitter:image:alt"				content="@yield('meta_image_alt', 'Cruisebookers')">
 	<meta name="twitter:site"					content="CruiseBookers.nl" />
 	<meta name="twitter:title"					content="@yield('title', 'Cruisebookers')">
     <meta name="verification"                   content="d17273cf421505896976a37bd3651dd7" /> <!-- AWIN -->
 	<meta name="b82df0e7a1e7d3f"                content="4f4224c6dd100bb1f881651af17967b7" /> <!-- DAISYCON -->
     <meta name="msvalidate.01"                  content="6EC4EEFC9ED10794EB0F2D1E427AEBCE" /> <!-- BING -->
     <meta property="og:description"				content="@yield('meta_description', 'CruiseBookers · Voordelige cruise vakanties in 2025/2026')" />
-	<meta property="og:image"					content="https://cruisebookers.nl/images/hero.jpg" />
-	<meta property="og:image:alt"				content="Cruisebookers" />
+	<meta property="og:image"					content="@yield('meta_image', 'https://cruisebookers.nl/images/hero.jpg')" />
+	<meta property="og:image:alt"				content="@yield('meta_image_alt', 'Cruisebookers')" />
 	<meta property="og:image:height"			content="1375" />
 	<meta property="og:image:type"				content="image/jpeg" />
 	<meta property="og:image:width"				content="1920" />
