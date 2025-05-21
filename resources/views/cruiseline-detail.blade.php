@@ -70,7 +70,7 @@
             </a>
 
             <div class="row mt-5">
-                <h3 class="mb-4">Onze Schepen</h3>
+                <h3 class="mb-4">De vloot van {{ $cruiseline->name }}</h3>
                 @if(isset($cruiseline->fleet_paragraph) && $cruiseline->fleet_paragraph != '')
                     {!! $cruiseline->fleet_paragraph !!}
                 @endif
