@@ -43,10 +43,34 @@
             <a href="{{ route('search', ['cruiseline' => [$cruiseline->name]]) }}" class="btn btn-primary mt-4 mb-4">
                 Bekijk de aanbiedingen van {{ $cruiseline->name }}
             </a>
-
             @if(isset($cruiseline->lead_paragraph) && $cruiseline->lead_paragraph != '')
                 <p class="lead">{!! $cruiseline->lead_paragraph !!}</p>
             @endif
+
+
+            @if(isset($cruiseline->paragraph_history) && $cruiseline->paragraph_history != '')
+                <p class="lead">{!! $cruiseline->paragraph_history !!}</p>
+            @endif
+            @if(isset($cruiseline->paragraph_marketposition) && $cruiseline->paragraph_marketposition != '')
+                <p class="lead">{!! $cruiseline->paragraph_marketposition !!}</p>
+            @endif
+            @if(isset($cruiseline->paragraph_usps) && $cruiseline->paragraph_usps != '')
+                <p class="lead">{!! $cruiseline->paragraph_usps !!}</p>
+            @endif
+            @if(isset($cruiseline->paragraph_fleet) && $cruiseline->paragraph_fleet != '')
+                <p class="lead">{!! $cruiseline->paragraph_fleet !!}</p>
+            @endif
+            @if(isset($cruiseline->paragraph_destinations) && $cruiseline->paragraph_destinations != '')
+                <p class="lead">{!! $cruiseline->paragraph_destinations !!}</p>
+            @endif
+            @if(isset($cruiseline->paragraph_sustainability) && $cruiseline->paragraph_sustainability != '')
+                <p class="lead">{!! $cruiseline->paragraph_sustainability !!}</p>
+            @endif
+            @if(isset($cruiseline->paragraph_conclusion) && $cruiseline->paragraph_conclusion != '')
+                <p class="lead">{!! $cruiseline->paragraph_conclusion !!}</p>
+            @endif
+
+
             @if(isset($cruiseline->second_paragraph) && $cruiseline->second_paragraph != '')
                 {!! $cruiseline->second_paragraph !!}
             @endif
@@ -56,6 +80,7 @@
             @if(isset($cruiseline->fourth_paragraph) && $cruiseline->fourth_paragraph != '')
                 {!! $cruiseline->fourth_paragraph !!}
             @endif
+            
 
             @if(isset($cruiseline->introduction) && $cruiseline->introduction != '')
                 {!! $cruiseline->introduction !!}
