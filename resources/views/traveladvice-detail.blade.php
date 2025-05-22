@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $traveladvice->location)
+@section('title', 'Reisadvies ' . $traveladvice->location . ' - Veiligheid & Tips | Cruisebookers' )
+@section('meta_description', 'Ontdek het actuele reisadvies voor ' . $traveladvice->location . ' . Lees alles over veiligheid, gezondheid, lokale regels en praktische tips voor je cruise of vakantie.' )
 
 @section('content')
 <div class="container my-4">
