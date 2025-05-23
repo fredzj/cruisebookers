@@ -173,6 +173,10 @@ footer {
     /*text-align: center;*/
 }
 
+footer h5 {
+    color: var(--golden-yellow);
+}
+
 footer a {
     color: var(--white);
     text-decoration: none;

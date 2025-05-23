@@ -1,4 +1,3 @@
-{{-- filepath: d:\Work\Clients\FredOnis\cruisebookers\resources\views\blog\show.blade.php --}}
 @extends('layouts.app')
 
 @section('title', $blog->meta_title ?? $blog->title)
@@ -10,7 +9,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="/blog">Blogs</a></li>
+                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $blog->title }}</li>
             </ol>
         </nav>

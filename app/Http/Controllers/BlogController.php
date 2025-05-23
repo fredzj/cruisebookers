@@ -11,7 +11,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::orderBy('timestamp', 'desc')->paginate(10);
+        $blogs = Blog::orderBy('timestamp', 'desc')->paginate(12);
         return view('blog.index', compact('blogs'));
     }
 
@@ -22,7 +22,7 @@ class BlogController extends Controller
      */
     public function all()
     {
-        return Blog::orderBy('timestamp', 'desc')->get();
+        return Blog::orderBy('timestamp', 'desc')->paginate(12);
     }
 
     /**

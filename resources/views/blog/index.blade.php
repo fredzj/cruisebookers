@@ -1,4 +1,3 @@
-{{-- filepath: d:\Work\Clients\FredOnis\cruisebookers\resources\views\blog\index.blade.php --}}
 @extends('layouts.app')
 
 @section('title', 'Blog - CruiseBookers')
@@ -10,7 +9,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
         </ol>
     </nav>
 
@@ -21,13 +20,13 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">{{ $blog->title }}</h5>
-                        <p class="card-text">{!! Str::limit($blog->body, 100) !!}</p>
+                        <p class="card-text">{!! Str::limit(str_replace([' class="lead"', '<h2>', '</h2>'], ['', '<p>', '</p>'], $blog->body), 100) !!}</p>
                         <a href="{{ route('blog.show', $blog->slug) }}" class="btn btn-primary">Lees verder</a>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-    {{ $blogs->links() }}
+    {{ $blogs->appends(request()->except('page'))->links('vendor.pagination.custom') }}
 </div>
 @endsection
