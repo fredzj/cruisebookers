@@ -47,6 +47,17 @@
                 @endforeach
             </ul>
         </li>
+    
+        <!-- Blog Overview -->
+        <li><a href="{{ route('blog.index') }}">Blog</a>
+
+        <!-- Blog Detail Pages -->
+            <ul>
+                @foreach($blogs as $blog)
+                    <li><a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a></li>
+                @endforeach
+            </ul>
+        </li>
     </ul>
 </div>
 @endsection

@@ -16,6 +16,16 @@ class BlogController extends Controller
     }
 
     /**
+     * Retrieve all blogs for external use.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function all()
+    {
+        return Blog::orderBy('timestamp', 'desc')->get();
+    }
+
+    /**
      * Display a specific blog post.
      */
     public function show($slug)

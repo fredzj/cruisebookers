@@ -39,10 +39,11 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/search/riviercruises', [SearchController::class, 'riverCruises'])->name('search.rivercruises');
 
 Route::get('/sitemap', function () {
-    $merchants = app(AffiliateNetworkMerchantController::class)->all();
+    $blogs = app(BlogController::class)->all();
     $cruiselines = app(AffiliateCruiselineController::class)->all();
+    $merchants = app(AffiliateNetworkMerchantController::class)->all();
     $traveladvices = app(VendorRijksoverheidTraveladviceController::class)->all();
-    return view('sitemap', compact('merchants', 'cruiselines', 'traveladvices'));
+    return view('sitemap', compact('blogs', 'cruiselines', 'merchants', 'traveladvices'));
 })->name('sitemap');
 
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
