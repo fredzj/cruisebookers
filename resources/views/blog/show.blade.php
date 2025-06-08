@@ -16,9 +16,16 @@
 
         <div class="row">
             <div class="col-md-4">
+                {{-- Show featured image if present --}}
+                @if(!empty($blog->image))
+                    <div class="mb-4 text-center">
+                        <img src="{{ asset($blog->image) }}" 
+                             alt="{{ $blog->title }}" 
+                             class="img-fluid rounded">
+                    </div>
+                @endif
             </div>
             <div class="col-md-8 bg-white opacity-90">
-
                 <h1>{{ $blog->title }}</h1>
                 <p class="text-muted">{{ $blog->timestamp->translatedFormat('l j F Y') }}</p>
                 <div class="content">

@@ -66,6 +66,23 @@ class GenerateSitemap extends Command
                 ->setChangeFrequency('weekly'));
         }
 
+        // ← Add cruiseship detail pages only where paragraph_destinations exists
+        $shipsWithContent = AffiliateCruiseship::query()
+            ->nonBlocked()
+            ->whereNotNull('paragraph_destinations')
+            ->where('paragraph_destinations', '<>', '')
+            ->with('cruiseline')
+            ->get();
+
+        foreach ($shipsWithContent as $ship) {
+            if ($ship->cruiseline) {
+                $url = "/cruisemaatschappijen/{$ship->cruiseline->slug}/{$ship->slug}";
+                $sitemap->add(Url::create($url)
+                    ->setPriority(0.6)
+                    ->setChangeFrequency('weekly'));
+            }
+        }
+
         // Save the sitemap to the public directory
         $sitemap->writeToFile(public_path('sitemap.xml'));
 

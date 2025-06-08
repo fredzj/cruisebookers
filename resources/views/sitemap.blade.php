@@ -17,17 +17,32 @@
         <li><a href="{{ url('/disclaimer') }}">Disclaimer</a></li>
         <li><a href="{{ url('/privacyverklaring') }}">Privacyverklaring</a></li>
 
-        <!-- Cruiselines Overview -->
-        <li><a href="{{ route('cruiselines') }}">Cruisemaatschappijen</a>
-
-            <!-- Cruiseline Detail Pages -->
-                <ul>
-                    @foreach($cruiselines as $cruiseline)
-                        <li><a href="{{ route('cruiselines.show', $cruiseline->slug) }}">{{ $cruiseline->name }}</a></li>
+        <!-- Cruiselines and Ships -->
+        <li>
+          <a href="{{ route('cruiselines') }}">Cruisemaatschappijen</a>
+          <ul>
+            @foreach($cruiselines as $cru)
+              <li>
+                <a href="{{ route('cruiselines.show', $cru->slug) }}">{{ $cru->name }}</a>      
+                @if($cru->cruiseships->isNotEmpty())
+                  <ul>
+                    @foreach($cru->cruiseships as $ship)
+                      <li>
+                        <a href="{{ route('cruiseships.show', [
+                          'cruiseline' => $cru->slug,
+                          'ship'       => $ship->slug
+                        ]) }}">
+                          {{ $ship->name }}
+                        </a>
+                      </li>
                     @endforeach
-                </ul>
-            </li>
-    
+                  </ul>
+                @endif      
+              </li>
+            @endforeach
+          </ul>
+        </li>
+  
         <!-- Merchants Overview -->
         <li><a href="{{ route('partners') }}">Reisorganisaties</a>
 

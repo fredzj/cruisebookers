@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AffiliateCruiselineController;
+use App\Http\Controllers\AffiliateCruiseshipController;
 use App\Http\Controllers\AffiliateNetworkMerchantController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\VendorRijksoverheidTraveladviceController;
 use App\Http\Controllers\ProductController;
 
@@ -16,6 +18,10 @@ Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/cruisemaatschappijen', [AffiliateCruiselineController::class, 'index'])->name('cruiselines');
 Route::get('/cruisemaatschappijen/{slug}', [AffiliateCruiselineController::class, 'show'])->name('cruiselines.show');
+Route::get(
+    '/cruisemaatschappijen/{cruiseline}/{ship}', 
+    [AffiliateCruiseshipController::class, 'show']
+)->name('cruiseships.show');
 
 Route::get('/partners', [AffiliateNetworkMerchantController::class, 'index'])->name('partners');
 Route::get('/partners/{slug}', [AffiliateNetworkMerchantController::class, 'show'])->name('partners.show');
@@ -38,12 +44,6 @@ Route::get('/privacyverklaring', function () {
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/search/riviercruises', [SearchController::class, 'riverCruises'])->name('search.rivercruises');
 
-Route::get('/sitemap', function () {
-    $blogs = app(BlogController::class)->all();
-    $cruiselines = app(AffiliateCruiselineController::class)->all();
-    $merchants = app(AffiliateNetworkMerchantController::class)->all();
-    $traveladvices = app(VendorRijksoverheidTraveladviceController::class)->all();
-    return view('sitemap', compact('blogs', 'cruiselines', 'merchants', 'traveladvices'));
-})->name('sitemap');
+Route::get('/sitemap', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
