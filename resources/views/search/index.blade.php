@@ -406,7 +406,11 @@
                     <div class="col">
                         <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="text-decoration-none">
                             <div class="card h-100">
-                                <img src="{{ $product->image }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
+                                @if($product->image === 'https://cdn.cruiseonline.com/web/topper-placeholder-3-min.jpg')
+                                    <img src="{{ str_replace(' ', '-', strtolower('/images/cruiseships/' . $product->cruiseline_name . '-' . $product->cruiseship_name . '.jpg')) }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
+                                @else
+                                    <img src="{{ $product->image }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
+                                @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $product->name }}</h5>
                                     <p class="card-text">

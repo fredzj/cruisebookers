@@ -49,25 +49,25 @@
 
 
             @if(isset($cruiseline->paragraph_history) && $cruiseline->paragraph_history != '')
-                <p class="lead">{!! $cruiseline->paragraph_history !!}</p>
+                {!! $cruiseline->paragraph_history !!}
             @endif
             @if(isset($cruiseline->paragraph_marketposition) && $cruiseline->paragraph_marketposition != '')
-                <p class="lead">{!! $cruiseline->paragraph_marketposition !!}</p>
+                {!! $cruiseline->paragraph_marketposition !!}
             @endif
             @if(isset($cruiseline->paragraph_usps) && $cruiseline->paragraph_usps != '')
-                <p class="lead">{!! $cruiseline->paragraph_usps !!}</p>
+                {!! $cruiseline->paragraph_usps !!}
             @endif
             @if(isset($cruiseline->paragraph_fleet) && $cruiseline->paragraph_fleet != '')
-                <p class="lead">{!! $cruiseline->paragraph_fleet !!}</p>
+                {!! $cruiseline->paragraph_fleet !!}
             @endif
             @if(isset($cruiseline->paragraph_destinations) && $cruiseline->paragraph_destinations != '')
-                <p class="lead">{!! $cruiseline->paragraph_destinations !!}</p>
+                {!! $cruiseline->paragraph_destinations !!}
             @endif
             @if(isset($cruiseline->paragraph_sustainability) && $cruiseline->paragraph_sustainability != '')
-                <p class="lead">{!! $cruiseline->paragraph_sustainability !!}</p>
+                {!! $cruiseline->paragraph_sustainability !!}
             @endif
             @if(isset($cruiseline->paragraph_conclusion) && $cruiseline->paragraph_conclusion != '')
-                <p class="lead">{!! $cruiseline->paragraph_conclusion !!}</p>
+                {!! $cruiseline->paragraph_conclusion !!}
             @endif
 
 

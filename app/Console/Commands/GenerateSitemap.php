@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use App\Models\AffiliateCruiseship;
 
 class GenerateSitemap extends Command
 {
@@ -86,7 +87,7 @@ class GenerateSitemap extends Command
         // Save the sitemap to the public directory
         $sitemap->writeToFile(public_path('sitemap.xml'));
 
-        $this->info('Main sitemap generated successfully!');
+        $this->info('Main sitemap generated successfully!  ' . public_path('sitemap.xml'));
     }
 
     private function createDaisyconSitemap()
