@@ -409,7 +409,7 @@
                                 @if($product->image === 'https://cdn.cruiseonline.com/web/topper-placeholder-3-min.jpg')
                                     <img src="{{ str_replace(' ', '-', strtolower('/images/cruiseships/' . $product->cruiseline_name . '-' . $product->cruiseship_name . '.jpg')) }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
                                 @else
-                                    <img src="{{ $product->image }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
+                                    <img src="{{ str_replace('secure.cdn.vellance.com/cruisereizen/cruisereizen', 'cdn.cruisereizen.nl', $product->image) }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
                                 @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $product->name }}</h5>
