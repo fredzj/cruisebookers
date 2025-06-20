@@ -21,7 +21,11 @@
             @if(isset($product->additional_data->images) && is_array($product->additional_data->images))
             <div class="gallery mt-4">
                 <div class="main-image text-center mb-3">
-                    <img id="mainImage" src="{{ $product->additional_data->images[0] }}" class="img-fluid rounded" alt="Main Image">
+                    @if($product->image === 'https://cdn.cruiseonline.com/web/topper-placeholder-3-min.jpg')
+                        <img src="{{ str_replace(' ', '-', strtolower('/images/cruiseships/' . $product->cruiseline_name . '-' . $product->cruiseship_name . '.jpg')) }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
+                    @else
+                        <img src="{{ str_replace('secure.cdn.vellance.com/cruisereizen/cruisereizen', 'cdn.cruisereizen.nl', $product->additional_data->images[0]) }}" class="card-img-top search-result-image" alt="{{ $product->name }}">
+                    @endif
                 </div>
                 <div class="thumbnails d-flex flex-wrap justify-content-center">
                     @foreach($product->additional_data->images as $image)
