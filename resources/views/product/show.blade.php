@@ -30,7 +30,11 @@
                 <div class="thumbnails d-flex flex-wrap justify-content-center">
                     @foreach($product->additional_data->images as $image)
                         <div class="thumbnail mx-2 mb-2">
-                            <img src="{{ $image }}" class="img-thumbnail" alt="Thumbnail Image" style="cursor: pointer; max-width: 100px;" onclick="document.getElementById('mainImage').src='{{ $image }}'">
+                            @if($image === 'https://cdn.cruiseonline.com/web/topper-placeholder-3-min.jpg')
+                                <img src="{{ str_replace(' ', '-', strtolower('/images/cruiseships/' . $product->cruiseline_name . '-' . $product->cruiseship_name . '.jpg')) }}" class="img-thumbnail" alt="Thumbnail Image" style="cursor: pointer; max-width: 100px;" onclick="document.getElementById('mainImage').src='{{ str_replace(' ', '-', strtolower('/images/cruiseships/' . $product->cruiseline_name . '-' . $product->cruiseship_name . '.jpg')) }}'">
+                            @else
+                                <img src="{{ str_replace('secure.cdn.vellance.com/cruisereizen/cruisereizen', 'cdn.cruisereizen.nl', $image) }}" class="img-thumbnail" alt="Thumbnail Image" style="cursor: pointer; max-width: 100px;" onclick="document.getElementById('mainImage').src='{{ str_replace('secure.cdn.vellance.com/cruisereizen/cruisereizen', 'cdn.cruisereizen.nl', $image) }}'">
+                            @endif
                         </div>
                     @endforeach
                 </div>
