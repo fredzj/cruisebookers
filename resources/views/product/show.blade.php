@@ -130,7 +130,7 @@
                 @endforeach
             @endif
         ],
-        "description": "{{ $product->additional_data->description ?? '' }}",
+        "description": "{{ $product->name }}",
         "brand": {
             "@type": "Brand",
             "name": "{{ $product->cruiseline_name ?? 'Unknown' }}"
@@ -178,13 +178,13 @@
                 }
             }
         }
-        @if(!empty($product->additional_data->accommodation_rating))
+        @if(!empty($product->additional_data->accommodation_rating) && $product->additional_data->accommodation_rating > 0)
         ,
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "{{ $product->additional_data->accommodation_rating ?? '' }}",
             "bestRating": "10",
-            "reviewCount": ""
+            "reviewCount": "0"
         }
         @endif
         ,
