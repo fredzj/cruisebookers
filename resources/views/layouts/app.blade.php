@@ -167,7 +167,7 @@
                         <li><a href="{{ route('search', ['merchant' => ['Oceanwide Expeditions']]) }}" class="text-white">Oceanwide Expeditions</a></li>
                         <li><a href="{{ route('search', ['merchant' => ['Stip Reizen']]) }}" class="text-white">Stip Reizen</a></li>
                         <li><a href="{{ route('search', ['merchant' => ['Traveldeal']]) }}" class="text-white">Traveldeal</a></li>
-                    <!--    <li><a href="{{ route('search', ['merchant' => ['TUI']]) }}" class="text-white">TUI</a></li> -->
+                        <li><a href="{{ route('search', ['merchant' => ['TUI']]) }}" class="text-white">TUI</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2"></div>
