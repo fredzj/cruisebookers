@@ -572,9 +572,9 @@ class TransformDaisyconData extends Command
      */
     protected function transformSchoolholidayId($record): ?int
     {
-         $holiday = DB::table('vendor_rijksoverheid_nl_schoolholidays')
-             ->where('startdate', '<=', $record->departure_date)
-             ->where('enddate', '>=', $record->departure_date)
+         $holiday = DB::table('school_holidays')
+             ->where('start_date', '<=', $record->departure_date)
+             ->where('end_date', '>=', $record->departure_date)
              ->first();
          return $holiday ? $holiday->id : null;
     }
