@@ -58,7 +58,7 @@
         <li><a href="{{ route('traveladvices') }}">Reisadviezen</a>
             <ul>
                 @foreach($traveladvices as $advice)
-                    <li><a href="{{ route('traveladvices.show', $advice->id) }}">{{ $advice->location }}</a></li>
+                    <li><a href="{{ route('traveladvices.show', $advice->iso_code) }}">{{ $advice->location }}</a></li>
                 @endforeach
             </ul>
         </li>

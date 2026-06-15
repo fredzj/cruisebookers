@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\VendorRijksoverheidTraveladvice;
+use App\Services\TravelAdviceApiClient;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 /**
  * Class VendorRijksoverheidTraveladviceController
- * 
- * Handles operations related to travel advice, including listing,
- * retrieving details, and filtering by countries with products.
+ *
+ * Handles the travel advice pages. Travel advice data is no longer read from
+ * the local database but fetched from the private Nederland Wereldwijd widget
+ * API (travlr.nl). Only the whitelist of countries that actually have products
+ * is still derived from the local product data.
  */
 class VendorRijksoverheidTraveladviceController extends Controller
 {
@@ -21,69 +23,103 @@ class VendorRijksoverheidTraveladviceController extends Controller
      */
     public function index()
     {
-        // Get the list of countries for which products exist
-        $countriesWithProducts = DB::table('affiliate_products_loaded_searchpage')->pluck('destination_country_name');
+        $whitelist = $this->productCountryAlpha3Codes();
 
-        $traveladvices = DB::table('vendor_rijksoverheid_nl_traveladvice')
-            ->join('vendor_rijksoverheid_nl_traveladvice_files', 'vendor_rijksoverheid_nl_traveladvice.id', '=', 'vendor_rijksoverheid_nl_traveladvice_files.id')
-            ->select('vendor_rijksoverheid_nl_traveladvice.id', 'vendor_rijksoverheid_nl_traveladvice.location', 'vendor_rijksoverheid_nl_traveladvice_files.fileurl')
-            ->where('vendor_rijksoverheid_nl_traveladvice_files.maptype', 'legend') // Filter for maptype 'legend'
-            ->whereNotNull('vendor_rijksoverheid_nl_traveladvice_files.fileurl') // Ensure there is a map URL
-            ->whereIn('vendor_rijksoverheid_nl_traveladvice.location', $countriesWithProducts) // Filter by countries with products
-            ->orderBy('vendor_rijksoverheid_nl_traveladvice.location', 'asc') // Sort by country name
-            ->get();
+        $error = null;
+        $countries = [];
 
-        return view('traveladvices', compact('traveladvices'));
+        try {
+            $countries = TravelAdviceApiClient::fromConfig()->countries($whitelist);
+        } catch (Throwable $e) {
+            report($e);
+            $error = 'De reisadviezen zijn momenteel niet beschikbaar.';
+        }
+
+        return view('traveladvices', compact('countries', 'error'));
     }
 
     /**
-     * Retrieve all travel advice for countries with products.
+     * Retrieve all travel advice countries with products (for the sitemap).
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection<int, object>
      */
     public function all()
     {
-        // Get the list of countries for which products exist
-        $countriesWithProducts = DB::table('affiliate_products_loaded_searchpage')->pluck('destination_country_name');
+        $whitelist = $this->productCountryAlpha3Codes();
 
-        // Return only travel advice for countries with products
-        return VendorRijksoverheidTraveladvice::select('id', 'location')
-            ->whereIn('location', $countriesWithProducts) // Filter by countries with products
-            ->orderBy('id', 'asc') // Sort by id in ascending order
-            ->get();
+        try {
+            $countries = TravelAdviceApiClient::fromConfig()->countries($whitelist);
+        } catch (Throwable $e) {
+            report($e);
+
+            return collect();
+        }
+
+        return collect($countries)
+            ->map(static fn (array $c): object => (object) [
+                'iso_code' => (string) ($c['iso_code'] ?? ''),
+                'location' => (string) ($c['location'] ?? ''),
+            ])
+            ->filter(static fn (object $c): bool => $c->iso_code !== '')
+            ->sortBy('location')
+            ->values();
     }
-    
+
     /**
-     * Display the details of travel advice for a specific country.
+     * Display the travel advice for a specific country.
      *
-     * @param string $id The ID or location of the travel advice.
+     * @param  string  $iso  ISO 3166-1 alpha-3 country code (e.g. BEL).
      * @return \Illuminate\View\View
-     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
-    public function show($id)
+    public function show(string $iso)
     {
-        // Fetch travel advice details for the selected country
-        $traveladvice = DB::table('vendor_rijksoverheid_nl_traveladvice')
-            ->join('vendor_rijksoverheid_nl_traveladvice_files', 'vendor_rijksoverheid_nl_traveladvice.id', '=', 'vendor_rijksoverheid_nl_traveladvice_files.id')
-            ->select(
-                'vendor_rijksoverheid_nl_traveladvice.authorities',
-                'vendor_rijksoverheid_nl_traveladvice.introduction',
-                'vendor_rijksoverheid_nl_traveladvice.location',
-                'vendor_rijksoverheid_nl_traveladvice.modificationdate',
-                'vendor_rijksoverheid_nl_traveladvice.modifications',
-                'vendor_rijksoverheid_nl_traveladvice.title',
-                'vendor_rijksoverheid_nl_traveladvice_files.fileurl'
-            )
-            ->where('vendor_rijksoverheid_nl_traveladvice.id', $id)
-            ->where('vendor_rijksoverheid_nl_traveladvice_files.maptype', 'legend')
-            ->firstOrFail();
+        $iso = strtoupper(trim($iso));
 
-        // Fetch content blocks for the selected travel advice
-        $contentblocks = DB::table('vendor_rijksoverheid_nl_traveladvice_contentblocks')
-            ->where('id', $id)
-            ->orderBy('sequence', 'asc')
-            ->get();
+        if (preg_match('/^[A-Z]{2,3}$/', $iso) !== 1) {
+            abort(404);
+        }
 
-        return view('traveladvice-detail', compact('traveladvice', 'contentblocks'));
+        try {
+            $data = TravelAdviceApiClient::fromConfig()->country($iso);
+        } catch (Throwable $e) {
+            report($e);
+            abort(503);
+        }
+
+        if ($data['country'] === null) {
+            abort(404);
+        }
+
+        return view('traveladvice-detail', [
+            'country' => $data['country'],
+            'advices' => $data['advices'],
+        ]);
+    }
+
+    /**
+     * Resolve the ISO 3166-1 alpha-3 codes of countries that have products.
+     *
+     * @return list<string>
+     */
+    private function productCountryAlpha3Codes(): array
+    {
+        $alpha2 = DB::table('affiliate_products_loaded_searchpage')
+            ->whereNotNull('destination_country_code')
+            ->where('destination_country_code', '<>', '')
+            ->distinct()
+            ->pluck('destination_country_code')
+            ->all();
+
+        if ($alpha2 === []) {
+            return [];
+        }
+
+        return DB::table('vendor_iso_3166_countrycodes')
+            ->whereIn('alpha_2_code', $alpha2)
+            ->pluck('alpha_3_code')
+            ->map(static fn ($code): string => strtoupper((string) $code))
+            ->unique()
+            ->values()
+            ->all();
     }
 }

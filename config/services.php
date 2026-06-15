@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'travlr' => [
+        'base_url' => env('TRAVLR_WIDGET_API_URL', 'https://travlr.nl/nederland-wereldwijd/widget-api.php'),
+        'token' => env('TRAVLR_WIDGET_API_TOKEN'),
+        'timeout' => env('TRAVLR_WIDGET_API_TIMEOUT', 10),
+    ],
+
 ];

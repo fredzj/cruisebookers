@@ -35,8 +35,6 @@ jobs:
             README.md
             package.json
             package-lock.json
-            composer.json
-            composer.lock
 
       - name: FTP Deploy (Public Folder)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

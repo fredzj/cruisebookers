@@ -27,7 +27,7 @@ Route::get('/partners', [AffiliateNetworkMerchantController::class, 'index'])->n
 Route::get('/partners/{slug}', [AffiliateNetworkMerchantController::class, 'show'])->name('partners.show');
 
 Route::get('/reisadviezen', [VendorRijksoverheidTraveladviceController::class, 'index'])->name('traveladvices');
-Route::get('/reisadviezen/{id}', [VendorRijksoverheidTraveladviceController::class, 'show'])->name('traveladvices.show');
+Route::get('/reisadviezen/{iso}', [VendorRijksoverheidTraveladviceController::class, 'show'])->name('traveladvices.show');
 
 Route::get('/cookieverklaring', function () {
     return view('cookieverklaring');
