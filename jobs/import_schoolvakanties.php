@@ -2,18 +2,48 @@
 
 declare(strict_types=1);
 
-// Database configuration
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'u10919p130675_cruise');
-define('DB_USER', 'u10919p130675_cruise');
-define('DB_PASS', 'RoseDeWittBukater');
+// Load .env file if present (CLI usage)
+(static function (): void {
+    $envFile = __DIR__ . '/.env';
+    if (!file_exists($envFile)) {
+        return;
+    }
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if (str_starts_with(trim($line), '#')) {
+            continue;
+        }
+        if (!str_contains($line, '=')) {
+            continue;
+        }
+        [$key, $value] = explode('=', $line, 2);
+        $key   = trim($key);
+        $value = trim($value, " \t\n\r\0\x0B\"'");
+        if ($key !== '' && getenv($key) === false) {
+            putenv("$key=$value");
+        }
+    }
+})();
+
+define('DB_HOST',    getenv('DB_HOST')    ?: 'localhost');
+define('DB_NAME',    getenv('DB_NAME')    ?: '');
+define('DB_USER',    getenv('DB_USER')    ?: '');
+define('DB_PASS',    getenv('DB_PASS')    ?: '');
 define('DB_CHARSET', 'utf8mb4');
 
 // API endpoint
 define('API_URL', 'https://opendata.rijksoverheid.nl/v1/infotypes/schoolholidays?output=json');
 
+function logLine(string $message): void
+{
+    echo sprintf('[%s] %s', date('H:i:s'), $message);
+}
+
 function createConnection(): PDO
 {
+    if (DB_NAME === '' || DB_USER === '') {
+        throw new RuntimeException('Database credentials not configured. Copy .env.example to .env and fill in the values.');
+    }
+
     $dsn = sprintf('mysql:host=%s;dbname=%s;charset=%s', DB_HOST, DB_NAME, DB_CHARSET);
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -111,21 +141,21 @@ function importHolidays(PDO $pdo, array $rows): int
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 try {
-    echo "Fetching school holidays from rijksoverheid.nl...\n";
+    logLine("Fetching school holidays from rijksoverheid.nl...\n");
     $rows = fetchHolidays();
-    echo sprintf("  Fetched %d records.\n", count($rows));
+    logLine(sprintf("  Fetched %d records.\n", count($rows)));
 
-    echo "Connecting to database...\n";
+    logLine("Connecting to database...\n");
     $pdo = createConnection();
 
-    echo "Creating table if not exists...\n";
+    logLine("Creating table if not exists...\n");
     createTable($pdo);
 
-    echo "Importing records...\n";
+    logLine("Importing records...\n");
     $imported = importHolidays($pdo, $rows);
-    echo sprintf("  Done. %d rows imported into school_holidays.\n", $imported);
+    logLine(sprintf("  Done. %d rows imported into school_holidays.\n", $imported));
 
 } catch (Throwable $e) {
-    fwrite(STDERR, 'Error: ' . $e->getMessage() . "\n");
+    fwrite(STDERR, sprintf('[%s] Error: %s' . "\n", date('H:i:s'), $e->getMessage()));
     exit(1);
 }
