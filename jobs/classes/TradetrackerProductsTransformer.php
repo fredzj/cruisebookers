@@ -434,7 +434,7 @@ class TradetrackerProductsTransformer {
 			$this->properties['duration_nights']	=	$this->properties['duration'];
 		}
 		
-		$this->properties['usps']			=	$this->properties['uniquefeatures'];
+		$this->properties['usps']			=	null;	//$this->properties['uniquefeatures'];
 		$this->properties['uniquefeatures']	=	null;
 	}
 	
